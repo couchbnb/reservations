@@ -1,17 +1,30 @@
-CREATE DATABASE couch_reservations;
+CREATE DATABASE IF NOT EXISTS fec_res;
 
-USE couch_reservations;
+USE fec_res;
 
-CREATE TABLE listings (
-  id INT NOT NULL AUTO-INCREMENT,
-  listing_id INT,
-  base_price INT,
-  surge_price INT,
+CREATE TABLE IF NOT EXISTS listings (
+  id INT NOT NULL AUTO_INCREMENT,
+  base_price FLOAT (6, 2) NOT NULL,
+  tax FLOAT (4, 4) NOT NULL,
+  service_fee FLOAT (4, 4) NOT NULL,
+  cleaning_fee FLOAT (6, 2) NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
-CREATE TABLE reservations (
-  id INT NOT NULL AUTO-INCREMENT,
-  listing_id INT,
+CREATE TABLE IF NOT EXISTS reservations (
+  id INT NOT NULL AUTO_INCREMENT,
+  listing_id INT NOT NULL,
+  start_year INT NOT NULL,
+  start_month INT NOT NULL,
+  start_day INT NOT NULL,
+  end_year INT NOT NULL,
+  end_month INT NOT NULL,
+  end_day INT NOT NULL,
   PRIMARY KEY (id)
-)
+);
+
+/*
+mysql -u root -p < schema.sql
+mysql -u root -p
+*/
+
