@@ -13,6 +13,7 @@ module.exports = {
   ],
   clearMocks: true,
   collectCoverage: false,
+  setupFilesAfterEnv: ["<rootDir>setup.js"]
 };
 
 
