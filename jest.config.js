@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  setupFiles: [ '<rootDir>/__tests__/setup.js' ],
+  setupFiles: [ '<rootDir>/setup.js' ],
   bail: 1,
   coveragePathIgnorePatterns: ['/node_modules/'],
   testEnvironment: "node"
