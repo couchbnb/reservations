@@ -1,8 +1,30 @@
 import React from 'react';
+import Axios from 'axios';
+import styled from 'styled-components';
+
+
 import PriceSummary from './PriceSummary.jsx';
 import Fees from './Fees.jsx';
 import Reserve from './Reserve.jsx';
-import Axios from 'axios';
+import CheckIn from './resSelect/ResSelect.jsx'
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+
+`;
+const Wrapper = styled.section`
+  padding: 4em;
+  max-width: 200px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 16px;
+  margin: 50px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  border-width: thin;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -23,12 +45,12 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="buff">
-        <h1 className="App">Hello, couchBNB!</h1>
+      <Wrapper>
         <PriceSummary />
-        <Fees />
+        <CheckIn />
         <Reserve />
-      </div>
+        <Fees />
+      </Wrapper>
     )
   }
 }
