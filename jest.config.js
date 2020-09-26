@@ -1,10 +1,19 @@
-const path = require('path');
-
 module.exports = {
-  setupFiles: [ '<rootDir>/__tests__/setup.js' ],
-  bail: 1,
-  coveragePathIgnorePatterns: ['/node_modules/'],
-  testEnvironment: "node"
+  setupFiles: [ '<rootDir>/setup.js' ],
+  // bail: 1,
+  // coveragePathIgnorePatterns: ['/node_modules/'],
+  testEnvironment: "node",
+  // testURL: 'http://localhost',
+  transform: {
+    '^.+\\.(jsx|js)$': "babel-jest"
+  },
+  moduleFileExtensions: [
+    "js",
+    "jsx"
+  ],
+  clearMocks: true,
+  collectCoverage: false,
+  setupFilesAfterEnv: ["<rootDir>setup.js"]
 };
 
 
@@ -180,7 +189,9 @@ module.exports = {
 //   // timers: "real",
 
 //   // A map from regular expressions to paths to transformers
-//   // transform: undefined,
+  // transform: {
+  //   "^.+\\.js$": "babel-jest"
+  // },
 
 //   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
 //   // transformIgnorePatterns: [
