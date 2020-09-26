@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Box = styled.div`
   border-color: black;
-  border-style: solid;
-  border-radius: 8px;
+  border-bottom-style: solid;
+
   border-width: thin;
 `;
 
