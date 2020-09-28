@@ -2,11 +2,11 @@ import React from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
 
-
 import PriceSummary from './PriceSummary.jsx';
 import Fees from './Fees.jsx';
 import Reserve from './Reserve.jsx';
-import CheckIn from './resSelect/ResSelect.jsx'
+import CheckIn from './resSelect/ResSelect.jsx';
+import RatingSummary from './RatingSummary.jsx';
 
 const Title = styled.h1`
   font-size: 1.5em;
@@ -47,6 +47,7 @@ class App extends React.Component {
     return (
       <Wrapper>
         <PriceSummary />
+        <RatingSummary />
         <CheckIn />
         <Reserve />
         <Fees />
