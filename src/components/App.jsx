@@ -19,7 +19,7 @@ const Wrapper = styled.section`
   width: 300px;
   border-color: black;
   border-style: solid;
-  border-radius: 16px;
+  border-radius: 14px;
   margin: 50px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
