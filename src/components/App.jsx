@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import styled from 'styled-components';
 
 import PriceSummary from './PriceSummary.jsx';
@@ -47,6 +47,7 @@ class App extends React.Component {
       listing: {},
       reservations: [],
     };
+    this.getListingData = this.getListingData.bind(this);
   }
 
   addReservation(resId, data) {
@@ -103,7 +104,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    Axios
+    this.getListingData();
   }
 }
 

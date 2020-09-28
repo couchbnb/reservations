@@ -33,11 +33,8 @@ let Calend = styled.div`
 let Summary = styled.div`
   display: flex;
   justify-content: space-between;
-
   margin-bottom: 20px;
   margin-left: 10px;
-
-
 `;
 
 let Checking = styled.div`
@@ -56,29 +53,33 @@ let Foot = styled.div`
   align-items: center;
 `;
 
-const CalendarView = (props) => (
-  <Wrapper>
-    <Summary>
-      <div>
-        <div>Select Dates</div>
-        <div>Minimum Stay: 1 night</div>
-      </div>
-      <Checking>
-        <CheckIn />
-        <CheckOut />
-      </Checking>
-    </Summary>
 
-    <Calend>
-      <LeftCalendar />
-      <RightCalendar />
-    </Calend>
+const CalendarView = (props) => {
 
-    <Foot>
-      <Clear />
-      <Close />
-    </Foot>
-  </Wrapper>
-)
+  return (
+    <Wrapper>
+      <Summary>
+        <div>
+          <div>Select Dates</div>
+          <div>Minimum Stay: 1 night</div>
+        </div>
+        <Checking>
+          <CheckIn />
+          <CheckOut />
+        </Checking>
+      </Summary>
+
+      <Calend>
+        <LeftCalendar />
+        <RightCalendar />
+      </Calend>
+
+      <Foot>
+        <Clear />
+        <Close />
+      </Foot>
+    </Wrapper>
+  )
+}
 
 export default CalendarView;
