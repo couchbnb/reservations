@@ -3,17 +3,15 @@ import styled from 'styled-components';
 
 const Box = styled.div`
   border-color: black;
-  border-right-style: solid;
-  border-width: thin;
-  width: 50%;
+  width: 49%;
   text-align: center;
 `;
 
 
-const CheckIn = (props) => {
+const CheckOut = (props) => {
   return (
-    <Box>check-in</Box>
+    <Box>check-out</Box>
   )
 }
 
-export default CheckIn;
+export default CheckOut;

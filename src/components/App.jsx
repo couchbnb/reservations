@@ -15,8 +15,8 @@ const Title = styled.h1`
 
 `;
 const Wrapper = styled.section`
-  padding: 4em;
-  max-width: 200px;
+  padding: 30px;
+  width: 300px;
   border-color: black;
   border-style: solid;
   border-radius: 16px;
@@ -25,6 +25,20 @@ const Wrapper = styled.section`
   font-size: 14px;
   border-width: thin;
 `;
+
+const Summary = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px
+`;
+
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+`
 
 class App extends React.Component {
   constructor(props) {
@@ -46,10 +60,14 @@ class App extends React.Component {
   render () {
     return (
       <Wrapper>
-        <PriceSummary />
-        <RatingSummary />
+        <Summary>
+          <PriceSummary />
+          <RatingSummary />
+        </Summary>
         <CheckIn />
-        <Reserve />
+        <Button>
+          <Reserve />
+        </Button>
         <Fees />
       </Wrapper>
     )
