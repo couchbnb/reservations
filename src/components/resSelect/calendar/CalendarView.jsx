@@ -9,10 +9,13 @@ import FwButton from './FwButton.jsx';
 import Date from './Date.jsx';
 import CheckIn from '../CheckIn.jsx';
 import CheckOut from '../CheckOut.jsx';
+import Close from './Close.jsx';
+import Clear from './Clear.jsx';
+
 
 let Wrapper = styled.div`
-  padding: 10px;
-  margin: 10px;
+  padding: 20px;
+  margin: 20px;
   border-style: solid;
   border-color: black;
   border-radius: 7px;
@@ -46,12 +49,19 @@ let Checking = styled.div`
   width: 300px;
 `;
 
+let Foot = styled.div`
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 const CalendarView = (props) => (
   <Wrapper>
     <Summary>
       <div>
         <div>Select Dates</div>
-        <div>Minimum Stay</div>
+        <div>Minimum Stay: 1 night</div>
       </div>
       <Checking>
         <CheckIn />
@@ -63,6 +73,11 @@ const CalendarView = (props) => (
       <LeftCalendar />
       <RightCalendar />
     </Calend>
+
+    <Foot>
+      <Clear />
+      <Close />
+    </Foot>
   </Wrapper>
 )
 
