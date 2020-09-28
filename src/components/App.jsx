@@ -42,19 +42,48 @@ const Button = styled.div`
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      listing: {},
+      reservations: [],
+    };
   }
 
-  addReservation(resId, ) {
-    axios.post('/api/reservation', ()=>{})
+  addReservation(resId, data) {
+    axios.post('/api/reservation')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function(err) {
+        if (err) {
+          throw err;
+        }
+      });
   }
 
   getListingData() {
-    axios.get('/api/listing', ()=>{})
+    axios.get('/api/listing')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function(err) {
+        if (err) {
+          throw err;
+        }
+      });
   }
 
   getListingReservation(resId) {
-    axios.get('/api/reservation', ()=>{})
+    var queryString = `/api/reservation?`
+    axios.get('/api/reservation')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function(err) {
+        if (err) {
+          throw err;
+        }
+      });
   }
 
   render () {
@@ -71,6 +100,10 @@ class App extends React.Component {
         <Fees />
       </Wrapper>
     )
+  }
+
+  componentDidMount() {
+    Axios
   }
 }
 
