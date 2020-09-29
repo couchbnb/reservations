@@ -12,7 +12,7 @@ import CheckOut from '../CheckOut.jsx';
 import Close from './Close.jsx';
 import Clear from './Clear.jsx';
 
-
+// styled-components
 let Wrapper = styled.div`
   padding: 20px;
   margin: 20px;
@@ -33,11 +33,8 @@ let Calend = styled.div`
 let Summary = styled.div`
   display: flex;
   justify-content: space-between;
-
   margin-bottom: 20px;
   margin-left: 10px;
-
-
 `;
 
 let Checking = styled.div`
@@ -56,29 +53,40 @@ let Foot = styled.div`
   align-items: center;
 `;
 
-const CalendarView = (props) => (
-  <Wrapper>
-    <Summary>
-      <div>
-        <div>Select Dates</div>
-        <div>Minimum Stay: 1 night</div>
-      </div>
-      <Checking>
-        <CheckIn />
-        <CheckOut />
-      </Checking>
-    </Summary>
 
-    <Calend>
-      <LeftCalendar />
-      <RightCalendar />
-    </Calend>
+const CalendarView = (props) => {
+  var date = props.data.current_date;
+  var calendar = props.data.calendar;
+  console.log(date.month);
+  var month1 = calendar[date.month];
+  var month2 = calendar[date.month + 1];
 
-    <Foot>
-      <Clear />
-      <Close />
-    </Foot>
-  </Wrapper>
-)
+  console.log(month1)
+
+  return (
+    <Wrapper>
+      <Summary>
+        <div>
+          <div>Select Dates</div>
+          <div>Minimum Stay: 1 night</div>
+        </div>
+        <Checking>
+          <CheckIn />
+          <CheckOut />
+        </Checking>
+      </Summary>
+
+      <Calend>
+        <LeftCalendar month={month1} />
+        <RightCalendar month={month2} />
+      </Calend>
+
+      <Foot>
+        <Clear />
+        <Close />
+      </Foot>
+    </Wrapper>
+  )
+}
 
 export default CalendarView;

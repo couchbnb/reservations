@@ -5,6 +5,7 @@ const port = 3000;
 // const DB = require('./database/index.js');
 const control = require('./database/control.js');
 const parser = require('body-parser')
+const dates = require('./database/dates.js');
 
 app.use(parser.urlencoded({ extended: false }))
 app.use(parser.json());
@@ -14,6 +15,8 @@ app.use('/', express.static(path.join(__dirname, '/public')))
 app.listen(port, () => {
   console.log(`Reservation module listening at http://localhost:${port}`)
 })
+
+
 
 
 // routes
@@ -27,6 +30,7 @@ app.get('/api/listing', (req, res) => {
       console.log(err.name)
       res.sendStatus(500);
     } else {
+      data.push(dates);
       res.status(200).send(data);
     }
   })
@@ -54,6 +58,5 @@ app.post('/api/reservations', (req, res) => {
       res.status(201).send();
     }
   })
-
 })
 
