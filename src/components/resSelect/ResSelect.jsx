@@ -11,6 +11,7 @@ const Box = styled.div`
   border-width: 1px;
   z-index: 0;
   background-color: #FFFFFF !important;
+  padding: 0px;
 
   display: flex;
   flex-direction: column;
@@ -20,13 +21,21 @@ const Box = styled.div`
 `;
 
 const CheckInOut = styled.div`
-  flex: 1 1 0%;
+  ${'' /* flex: 1 1 0%; */}
   height: 56px;
-  border-style: solid;
+  width: 100%;
+
+  ${'' /* provisionally switched to border bottom only to achieve desired look */}
+  border-bottom-style: solid;
   border-radius: 8px 8px 0px 0px;
   border-color: rgb(176, 176, 176);
   border-width: 1px;
+  display: block;
 
+  box-sizing: border-box;
+
+  padding: 0px;
+  margin: 0px;
   top: 0px;
   left: 0px;
   right: 0px;
