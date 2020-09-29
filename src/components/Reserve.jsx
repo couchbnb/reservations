@@ -7,16 +7,24 @@ const ReserveButton = styled.div`
   justify-content: center;
   align-items: center;
   background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
-  height: 30px;
-  width: 250px;
+  height: 48px;
+  width: 100%;
   color: white;
   text-align: center;
   font-size: 16px;
   border-radius: 5px;
 `;
 
+const Text = styled.div`
+  height: 20px;
+`;
+
 const Reserve = () => (
-    <ReserveButton>Reserve</ReserveButton>
+    <ReserveButton>
+      <Text>
+        Check Availability
+      </Text>
+    </ReserveButton>
 );
 
 export default Reserve;
