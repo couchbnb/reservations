@@ -18,21 +18,37 @@ const Title = styled.h1`
 
 `;
 const Wrapper = styled.section`
-  padding: 30px;
-  width: 300px;
-  border-color: black;
-  border-style: solid;
-  border-radius: 14px;
+  position: sticky;
+  top: 80px;
   margin: 50px;
+  margin-left: 8.33333%;
+  margin-bottom: 80px;
+  margin-top: 48px;
+  padding: 24px;
+
+  box-sizing: border-box;
+  width: 300px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  font-size: 14px;
   border-width: thin;
+  color: #222222;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 const Summary = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px
+  align-items: baseline;
+  margin-bottom: 24px
 `;
 
 const Button = styled.div`

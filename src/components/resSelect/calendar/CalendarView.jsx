@@ -12,6 +12,7 @@ import CheckOut from '../CheckOut.jsx';
 import Close from './Close.jsx';
 import Clear from './Clear.jsx';
 
+
 // styled-components
 let Wrapper = styled.div`
   padding: 20px;

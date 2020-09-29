@@ -2,15 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DateSpace = styled.td`
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
 `;
+
+// const Date = styled.div`
+
+// `;
 
 const Date = (props) => {
   if (props.date.day) {
     return (
       <DateSpace>
         {props.date.day}
+
       </DateSpace>
     )
   } else {
