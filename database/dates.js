@@ -13,13 +13,32 @@ console.log('date = ' + calDate);
 
 var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+var daysInYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+var getYear = () => {
+  var year = []
+  for (var i = 0; i < daysInYear.length; i++) {
+    year.push([]);
+    for (var j = 1; j <= daysInYear[i]; j++) {
+      var thisDate = {
+        day: j,
+        monthNum: i,
+        monthName: monthNames[i]
+      }
+      year[i].push(thisDate);
+    }
+  }
+  return year;
+}
+
+
 
 const calendar = {
   cDate: calDate,
   cMonth: calMonth,
   cYear: calYear,
-  monthNames: monthNames
-
+  monthNames: monthNames,
+  blankCal: getYear()
 }
 
 module.exports = calendar;

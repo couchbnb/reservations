@@ -37,8 +37,7 @@ const Button = styled.div`
   justify-content: center;
   margin-top: 5px;
   margin-bottom: 5px;
-
-`
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -66,6 +65,11 @@ class App extends React.Component {
     axios.get('/api/listing')
       .then(function (response) {
         console.log(response);
+        var newListing = response.data[0];
+        var dates = response.data[1];
+        console.log('listing ' + newListing);
+        console.log('dates ' + dates);
+
       })
       .catch(function(err) {
         if (err) {
