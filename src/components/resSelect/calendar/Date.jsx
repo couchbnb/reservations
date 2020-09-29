@@ -7,11 +7,15 @@ const DateSpace = styled.td`
 `;
 
 const Date = (props) => {
-  return (
-    <DateSpace>
-      {props.date}
-    </DateSpace>
-  )
+  if (props.date.day) {
+    return (
+      <DateSpace>
+        {props.date.day}
+      </DateSpace>
+    )
+  } else {
+    return <DateSpace></DateSpace>
+  }
 }
 
 export default Date;
