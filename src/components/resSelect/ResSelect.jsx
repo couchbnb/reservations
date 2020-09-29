@@ -10,9 +10,10 @@ const Box = styled.div`
   border-color: rgb(176, 176, 176);
   border-width: 1px;
   z-index: 0;
+  background-color: #FFFFFF !important;
 
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin-bottom: 16px;
   box-sizing: border-box;
   width: 100%
