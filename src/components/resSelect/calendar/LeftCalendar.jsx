@@ -22,6 +22,10 @@ let Cal = styled.table`
   justify-content: center;
 `;
 
+let Header = styled.th`
+  width: 15px;
+`;
+
 
 const LeftCalendar = (props) => {
   if (props.month) {
@@ -47,13 +51,13 @@ const LeftCalendar = (props) => {
         <Cal>
           <tbody>
             <tr>
-              <th>Su</th>
-              <th>Mo</th>
-              <th>Tu</th>
-              <th>We</th>
-              <th>Th</th>
-              <th>Fr</th>
-              <th>Sa</th>
+              <Header>Su</Header>
+              <Header>Mo</Header>
+              <Header>Tu</Header>
+              <Header>We</Header>
+              <Header>Th</Header>
+              <Header>Fr</Header>
+              <Header>Sa</Header>
             </tr>
             {weeks.map(
               (week) => {
