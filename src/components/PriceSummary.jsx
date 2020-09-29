@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+  display: flex;
+  align-items: baseline;
+`;
+
 const Dollar = styled.div`
   font-size: 22px !important;
   line-height: 26px !important;
@@ -17,10 +22,10 @@ const Night = styled.div`
 `;
 
 const PriceSummary = (props) => (
-  <div>
+  <Wrapper>
     <Dollar>$100</Dollar>
     <Night>/ night</Night>
-  </div>
+  </Wrapper>
 );
 
 export default PriceSummary;

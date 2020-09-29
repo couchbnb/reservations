@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import PriceSummary from './PriceSummary.jsx';
 import Fees from './Fees.jsx';
 import Reserve from './Reserve.jsx';
-import CheckIn from './resSelect/ResSelect.jsx';
+import ResSelect from './resSelect/ResSelect.jsx';
 import RatingSummary from './RatingSummary.jsx';
 import CalendarView from './resSelect/calendar/CalendarView.jsx'
 
@@ -133,7 +133,7 @@ class App extends React.Component {
             <PriceSummary />
             <RatingSummary />
           </Summary>
-          <CheckIn />
+          <ResSelect />
           <Button>
             <Reserve />
           </Button>

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Wrap = styled.div`
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 `;
 
 const Star = styled.div`
@@ -12,13 +13,25 @@ const Star = styled.div`
 `;
 
 const Rating = styled.div`
-  display: flex;
+  color: rgb(34, 34, 34) !important;
+  padding-left: 4px !important;
+  font-weight: 600 !important;
+`;
+
+const Count = styled.div`
+  color: rgb(113, 113, 113) !important;
+  padding-left: 4px !important;
 `;
 
 const RatingSummary = (props) => (
   <Wrap>
-    <Star>X 󰀄 </Star>
-    <Rating>4.90 (357)</Rating>
+    <Star>(star)</Star>
+    <Rating>
+      4.90
+    </Rating>
+    <Count>
+      (357)
+    </Count>
   </Wrap>
 )
 
