@@ -25,6 +25,12 @@ let Cal = styled.table`
 
 const LeftCalendar = (props) => {
 
+  var createTable = () => {
+    // handle any unused days in the month
+
+    // start adding days to the month
+    for (var i = 0; i < props.month.length)
+  }
 
 
   return (
