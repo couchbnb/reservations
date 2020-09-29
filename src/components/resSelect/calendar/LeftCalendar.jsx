@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import Date from './Date.jsx'
+import RowDates from './Date.jsx'
 
 let Wrapper = styled.div`
   background-color: #E9E9E9;
@@ -24,14 +24,33 @@ let Cal = styled.table`
 
 
 const LeftCalendar = (props) => {
+  // goal: given an array of dates in a month, create an array of week arrays, each containing their respective days
+  // i array of days
+  // o array of week arrays
+  // s none
+  // e
+  // explain: organize days into weeks
+  // create 5 weeks
 
-  var createTable = () => {
-    // handle any unused days in the month
+  if (props.month) {
+    // week 1
+    // handle any unused days in the month)
+    var weeks = [[], [], [], [] ,[]];
+    for (var i = 0; i < props.month[0].dayIndex; i++) {
+      weeks[0].push({});
+    }
 
     // start adding days to the month
-    for (var i = 0; i < props.month.length)
+    var week = 0;
+    for (var i = 0; i < props.month.length; i++) {
+      console.log(week)
+      weeks[week].push(props.month[i]);
+      if (props.month[i].dayIndex === 6) {
+        week++;
+      }
+    }
+    console.log(weeks);
   }
-
 
   return (
     <Wrapper>

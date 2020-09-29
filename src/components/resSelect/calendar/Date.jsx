@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const DateSpace = styled.div`
+const DateSpace = styled.td`
   width: 15px;
   height: 15px;
 `;
 
 const Date = (props) => {
   return (
-    <div>
+    <DateSpace>
       {props.date}
-    </div>
+    </DateSpace>
   )
 }
+
+export default Date;
