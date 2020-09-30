@@ -4,8 +4,14 @@ import styled from 'styled-components'
 import RowDates from './RowDates.jsx'
 
 let Wrapper = styled.div`
+<<<<<<< HEAD
+  font-size: 1em;
+  margin: 0px !important;
+  padding: 0px;
+=======
   background-color: #E9E9E9;
   width: 40%;
+>>>>>>> master
 `;
 
 let Head = styled.div`
@@ -61,7 +67,7 @@ const LeftCalendar = (props) => {
             </tr>
             {weeks.map(
               (week) => {
-                return <RowDates data={week} key={Math.random()} ></RowDates>
+                return <RowDates data={week} key={Math.random()} listing={props.listing} reservations={props.reservations} current_date={props.current_date} ></RowDates>
               }
             )}
           </tbody>

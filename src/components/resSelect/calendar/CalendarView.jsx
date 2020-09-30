@@ -1,33 +1,47 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 
 // components
 import LeftCalendar from './LeftCalendar.jsx';
 import RightCalendar from './RightCalendar.jsx';
-import BkButton from './BkButton.jsx';
-import FwButton from './FwButton.jsx';
-import Date from './Date.jsx';
+// import BkButton from './BkButton.jsx';
+// import FwButton from './FwButton.jsx';
 import CheckIn from '../CheckIn.jsx';
 import CheckOut from '../CheckOut.jsx';
 import Close from './Close.jsx';
 import Clear from './Clear.jsx';
+import Keyboard from './Keyboard.jsx'
+
+// import { ReactComponent as Keyboard } from '../../../assets/keyboard.svg'
+
 
 // styled-components
 let Wrapper = styled.div`
-  padding: 20px;
-  margin: 20px;
-  border-style: solid;
+  background: rgb(255, 255, 255) !important;
+  border-radius: 16px !important;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px !important;
+  ${'' /* display: inline-block !important; */}
+  padding: 24px 32px 16px !important;
+  ${'' /* position: absolute !important; */}
+  top: -24px !important;
+  right: -32px !important;
+  width: 661px !important;
+  z-index: 1 !important;
+  min-height: 460px !important;
+
+  ${'' /* border-style: solid;
   border-color: black;
   border-radius: 7px;
-  border-width: thin;
+  border-width: thin; */}
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
-  width: 550px;
 `;
 
 let Calend = styled.div`
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
+  margin-bottom: 20px;
 `;
 
 let Summary = styled.div`
@@ -49,7 +63,13 @@ let Checking = styled.div`
 let Foot = styled.div`
   margin-top: 10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+let Closer = styled.div`
+  display: flex;
+  flex-direction: row;
   align-items: center;
 `;
 
@@ -77,13 +97,16 @@ const CalendarView = (props) => {
       </Summary>
 
       <Calend>
-        <LeftCalendar month={month1} />
-        <RightCalendar month={month2} />
+        <LeftCalendar month={month1} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} />
+        <RightCalendar month={month2} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} />
       </Calend>
 
       <Foot>
-        <Clear />
-        <Close />
+        <Keyboard />
+        <Closer>
+          <Clear />
+          <Close />
+        </Closer>
       </Foot>
     </Wrapper>
   )
