@@ -77,15 +77,13 @@ let Closer = styled.div`
 const CalendarView = (props) => {
   var date = props.data.current_date;
   var calendar = props.data.calendar;
-  console.log(date.month);
   var month1 = calendar[date.month];
   var month2 = calendar[date.month + 1];
 
-  console.log(month1)
 
   return (
-    <Wrapper>
-      <Summary>
+    <Wrapper className="CalendarView">
+      <Summary className="summary">
         <div>
           <div>Select Dates</div>
           <div>Minimum Stay: 1 night</div>
@@ -96,12 +94,12 @@ const CalendarView = (props) => {
         </Checking>
       </Summary>
 
-      <Calend>
+      <Calend className="calend">
         <LeftCalendar month={month1} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} />
         <RightCalendar month={month2} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} />
       </Calend>
 
-      <Foot>
+      <Foot className="foot">
         <Keyboard />
         <Closer>
           <Clear />

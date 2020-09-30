@@ -50,11 +50,11 @@ describe('RowDates', () => {
   });
 
 
-  it('should render with <td> children', () => {
-    expect(wrapper.find('td').children()).to.have.lengthOf(props.data.length)
+  it('should render with input data as <td> children', () => {
+    expect(wrapper.find('Date').length).toBe(props.data.length)
   });
 
 
-
+// are dates real?
 
 })

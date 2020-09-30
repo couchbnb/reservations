@@ -22,7 +22,7 @@ const Night = styled.div`
 `;
 
 const PriceSummary = (props) => (
-  <Wrapper>
+  <Wrapper className="PriceSummary">
     <Dollar>$100</Dollar>
     <Night>/ night</Night>
   </Wrapper>

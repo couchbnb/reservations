@@ -122,13 +122,13 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <Wrapper>
-          <Summary>
+        <Wrapper className="wrapper">
+          <Summary className="summary">
             <PriceSummary />
             <RatingSummary />
           </Summary>
           <ResSelect />
-          <Button>
+          <Button className="button">
             <Reserve />
           </Button>
           <Fees />

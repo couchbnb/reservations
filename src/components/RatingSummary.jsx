@@ -24,7 +24,7 @@ const Count = styled.div`
 `;
 
 const RatingSummary = (props) => (
-  <Wrap>
+  <Wrap className="RatingSummary">
     <Star>(star)</Star>
     <Rating>
       4.90
