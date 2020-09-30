@@ -69,7 +69,7 @@ const Date = (props) => {
             {props.date.day}
           </DateVal>
           <Price>
-            {props.listing.base_price}
+            {'$' + props.listing.base_price}
           </Price>
         </DateSpace>
       )
