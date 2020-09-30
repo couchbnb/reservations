@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 //components
-import DateUnavailable from './dateStyle/DateUnavailable.jsx'
+import DatePast from './dateStyle/DatePast.jsx'
 
 const DateSpace = styled.td`
   margin-left: 1px !important;
@@ -60,7 +60,7 @@ const Date = (props) => {
     var isSameMonthPastDay = props.date.monthNum === props.current_date.month && props.date.day < props.current_date.day;
     if (isPastMonth || isSameMonthPastDay) {
       return (
-        <DateUnavailable data={props.date.day} />
+        <DatePast data={props.date.day} />
       )
     } else {
       return (
