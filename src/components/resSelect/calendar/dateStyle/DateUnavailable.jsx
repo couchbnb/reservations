@@ -26,18 +26,14 @@ const DateVal = styled.div`
   color: rgb(34, 34, 34);
   padding: 0px;
 
-  ${'' /* -webkit-box-direction: normal !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-box-pack: center !important;
-  -webkit-box-align: center !important; */}
-  ${'' /* margin-left: 1px !important;
-  margin-right: 1px !important; */}
-  ${'' /* display: flex !important; */}
-  ${'' /* align-items: center !important;
+  ${'' /* need to figure out whether both px margin is better or not */}
+  margin-left: 1px !important;
+  margin-right: 1px !important;
+  display: flex !important;
+  align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important; */}
+  flex-direction: column !important;
   border-radius: 100% !important;
-  ${'' /* position: relative !important; */}
   border: 1.5px solid rgb(255, 255, 255) !important;
   font-size: 14px !important;
   line-height: 18px !important;
