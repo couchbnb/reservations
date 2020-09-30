@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+//components
+import DateUnavailable from './dateStyle/DateUnavailable.jsx'
+
 const DateSpace = styled.td`
   margin-left: 1px !important;
   margin-right: 1px !important;
@@ -13,11 +16,9 @@ const DateSpace = styled.td`
   border-bottom-left-radius: 4px;
   background: rgb(255, 255, 255);
   color: rgb(34, 34, 34);
-
-
 `;
 
-const DateVal = styled.td`
+const DateVal = styled.div`
   margin-left: 1px !important;
   margin-right: 1px !important;
   display: flex !important;
@@ -55,18 +56,24 @@ const Price = styled.div`
 
 const Date = (props) => {
   if (props.date.day) {
-    return (
-      <DateSpace>
-        <DateVal>
-          {props.date.day}
-        </DateVal>
-        <Price>
-          $100
-        </Price>
-
-
-      </DateSpace>
-    )
+    var isPastMonth = (props.date.monthNum < props.current_date.month);
+    var isSameMonthPastDay = props.date.monthNum === props.current_date.month && props.date.day < props.current_date.day;
+    if (isPastMonth || isSameMonthPastDay) {
+      return (
+        <DateUnavailable data={props.date.day} />
+      )
+    } else {
+      return (
+        <DateSpace>
+          <DateVal>
+            {props.date.day}
+          </DateVal>
+          <Price>
+            $100
+          </Price>
+        </DateSpace>
+      )
+    }
   } else {
     return <DateSpace></DateSpace>
   }

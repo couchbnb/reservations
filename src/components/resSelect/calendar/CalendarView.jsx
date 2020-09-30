@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -97,8 +98,8 @@ const CalendarView = (props) => {
       </Summary>
 
       <Calend>
-        <LeftCalendar month={month1} />
-        <RightCalendar month={month2} />
+        <LeftCalendar month={month1} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} />
+        <RightCalendar month={month2} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} />
       </Calend>
 
       <Foot>

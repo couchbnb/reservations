@@ -107,7 +107,7 @@ class App extends React.Component {
   }
 
   getListingReservation(resId) {
-    var queryString = `/api/reservation?`
+    // var queryString = `/api/reservation?`
     axios.get('/api/reservation')
       .then(function (response) {
         console.log(response);
