@@ -8,8 +8,6 @@ import { shallow, mount, render } from 'enzyme';
 
 // basic component mount test
 describe('App parent component', () => {
-
-
   var wrapper = shallow(<App />);
 
   it('renders without crashing', () => {
@@ -17,15 +15,18 @@ describe('App parent component', () => {
   });
 
   it('should be selectable by class', () => {
-    expect(shallow(<App />).is('.App')).toBe(true)
+    expect(wrapper.is('.App')).toBe(true)
   })
 
   it('should mount in a full DOM', () => {
     expect(mount(<App />).find('.App')).length.toBe(true);
+    // expect(wrapper.find('.App')).length.toBe(true);
   })
 
   it('should mount in a full DOM with children', () => {
     expect(mount(<App />).children()).length.toBeGreaterThan(0);
+    // expect(wrapper.children()).length.toBeGreaterThan(0);
+
   })
 
   it('should render to static HTML', () => {
@@ -34,11 +35,3 @@ describe('App parent component', () => {
 
 });
 
-describe('sample test, sum function', () => {
-  function sum(a, b) {
-    return a + b;
-  }
-  it('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3)
-  })
-});
