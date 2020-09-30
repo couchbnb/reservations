@@ -74,7 +74,6 @@ let Closer = styled.div`
 `;
 
 
-
 const CalendarView = (props) => {
   var date = props.data.current_date;
   var calendar = props.data.calendar;

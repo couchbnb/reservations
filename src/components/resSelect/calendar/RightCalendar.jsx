@@ -4,9 +4,14 @@ import styled from 'styled-components';
 import RowDates from './RowDates.jsx';
 
 let Wrapper = styled.div`
+<<<<<<< HEAD
   font-size: 1em;
   margin: 0px !important;
   padding: 0px;
+=======
+  background-color: #E9E9E9;
+  width: 40%;
+>>>>>>> master
 `;
 
 let Head = styled.div`
