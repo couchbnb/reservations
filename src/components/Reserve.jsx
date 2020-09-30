@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 
 const ReserveButton = styled.div`
+
   display: flex;
   justify-content: center;
   align-items: center;

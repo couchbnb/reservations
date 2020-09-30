@@ -11,15 +11,9 @@ import RatingSummary from './RatingSummary.jsx';
 import CalendarView from './resSelect/calendar/CalendarView.jsx'
 
 //styled-components
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-
-`;
 const Wrapper = styled.section`
   position: sticky;
-  top: 80px;
+  top: 50px;
   margin: 50px;
   margin-left: 8.33333%;
   margin-bottom: 80px;
@@ -127,7 +121,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="App">
         <Wrapper>
           <Summary>
             <PriceSummary />
