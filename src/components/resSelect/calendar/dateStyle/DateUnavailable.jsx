@@ -9,7 +9,7 @@ const DateSpace = styled.td`
 
   margin-left: 1px !important;
   margin-right: 1px !important;
-  display: flex !important;
+  ${'' /* display: flex !important; */}
   font-size: 14px !important;
   line-height: 18px !important;
   color: rgb(176, 176, 176) !important;
@@ -32,12 +32,12 @@ const DateVal = styled.div`
   -webkit-box-align: center !important; */}
   ${'' /* margin-left: 1px !important;
   margin-right: 1px !important; */}
-  display: flex !important;
-  align-items: center !important;
+  ${'' /* display: flex !important; */}
+  ${'' /* align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-direction: column !important; */}
   border-radius: 100% !important;
-  position: relative !important;
+  ${'' /* position: relative !important; */}
   border: 1.5px solid rgb(255, 255, 255) !important;
   font-size: 14px !important;
   line-height: 18px !important;
