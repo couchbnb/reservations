@@ -1,3 +1,5 @@
 node_modules
 config.js
 coverage/
+public/bundle.js
+package-lock.json
