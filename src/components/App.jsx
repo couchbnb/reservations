@@ -121,24 +121,43 @@ class App extends React.Component {
   }
 
   render () {
-    return (
-      <div className="App">
-        <Wrapper className="wrapper">
-          <Summary className="summary">
-            <PriceSummary />
-            <RatingSummary />
-          </Summary>
-          <ResSelect />
-          <Button className="button">
-            <Reserve />
-          </Button>
-          <Fees />
-        </Wrapper>
-        <CalendarView data={this.state} />
-        <GuestSelect />
-      </div>
 
-    )
+    if (this.state.valid_res) {
+      return (
+        <div className="App">
+          <Wrapper className="wrapper">
+            <Summary className="summary">
+              <PriceSummary />
+              <RatingSummary />
+            </Summary>
+            <ResSelect />
+            <Button className="button">
+              <Reserve valid_res={this.state.valid_res} />
+            </Button>
+            <Fees />
+          </Wrapper>
+          <CalendarView data={this.state} />
+          <GuestSelect />
+        </div>
+      )
+    } else {
+      return (
+        <div className="App">
+          <Wrapper className="wrapper">
+            <Summary className="summary">
+              <PriceSummary />
+              <RatingSummary />
+            </Summary>
+            <ResSelect />
+            <Button className="button">
+              <Reserve valid_res={this.state.valid_res} />
+            </Button>
+          </Wrapper>
+          <CalendarView data={this.state} />
+          <GuestSelect />
+        </div>
+      )
+    }
   }
 
   componentDidMount() {
