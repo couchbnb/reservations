@@ -20,12 +20,24 @@ const Text = styled.div`
   height: 20px;
 `;
 
-const Reserve = () => (
-    <ReserveButton className="Reserve">
-      <Text>
-        Check Availability
-      </Text>
-    </ReserveButton>
-);
+const Reserve = (props) => {
+  if (props.valid_res) {
+    return (
+      <ReserveButton className="Reserve">
+        <Text>
+          Reserve
+        </Text>
+      </ReserveButton>
+    )
+  } else {
+    return (
+      <ReserveButton className="Reserve">
+        <Text>
+          Check Availability
+        </Text>
+      </ReserveButton>
+    )
+  }
+};
 
 export default Reserve;

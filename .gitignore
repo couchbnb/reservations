@@ -2,4 +2,8 @@ node_modules
 config.js
 coverage/
 public/bundle.js
+<<<<<<< HEAD
 package-lock.json
+=======
+package-lock.json
+>>>>>>> master
