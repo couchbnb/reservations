@@ -21,7 +21,7 @@ const Text = styled.div`
 `;
 
 const Reserve = () => (
-    <ReserveButton>
+    <ReserveButton className="Reserve">
       <Text>
         Check Availability
       </Text>

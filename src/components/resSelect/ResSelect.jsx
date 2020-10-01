@@ -62,7 +62,7 @@ const InnerWrap = styled.div`
 
 const ResSelect = (props) => {
   return (
-    <Box>
+    <Box className="ResSelect">
       <CheckInOut>
         <InnerWrap>
           <CheckIn />

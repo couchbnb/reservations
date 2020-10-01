@@ -6,7 +6,8 @@
     "test": "jest",
     "start": "nodemon reservations/index.js",
     "build": "webpack --watch --config webpack.config.js",
-    "seed": "node database/seeder.js"
+    "seed": "node database/seeder.js",
+    "coverage": "jest --collect-coverage"
   },
   "author": "",
   "license": "ISC",
