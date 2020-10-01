@@ -29,7 +29,7 @@ let Header = styled.th`
 
 const RightCalendar = (props) => {
   if (props.month) {
-    var weeks = [[], [], [], [] ,[]];
+    var weeks = [[], [], [], [] ,[], []];
     for (var i = 0; i < props.month[0].dayIndex; i++) {
       weeks[0].push({});
     }
