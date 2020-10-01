@@ -54,9 +54,9 @@ const RightCalendar = (props) => {
       weeks[0].push({});
     }
     var week = 0;
-    for (var i = 0; i < props.month.length; i++) {
-      weeks[week].push(props.month[i]);
-      if (props.month[i].dayIndex === 6) {
+    for (var j = 0; j < props.month.length; j++) {
+      weeks[week].push(props.month[j]);
+      if (props.month[j].dayIndex === 6) {
         week++;
       }
     }

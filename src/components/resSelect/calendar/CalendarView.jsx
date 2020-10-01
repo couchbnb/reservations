@@ -29,6 +29,7 @@ let Wrapper = styled.div`
   width: 661px !important;
   z-index: 1 !important;
   min-height: 460px !important;
+  margin-left: 100px;
 
   ${'' /* border-style: solid;
   border-color: black;
