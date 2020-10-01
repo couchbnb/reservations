@@ -58,13 +58,25 @@ const Date = (props) => {
   if (props.date.day) {
     var isPastMonth = (props.date.monthNum < props.current_date.month);
     var isSameMonthPastDay = props.date.monthNum === props.current_date.month && props.date.day < props.current_date.day;
+    // if (props.test) {
+    //   console.log('test ' + props.test);
+    //   console.log('current date: ' + props.current_date.day);
+    //   console.log('curent month: ' + props.current_date.month);
+    //   console.log('date date: ' + props.date.day);
+    //   console.log('date month: ' + props.date.monthNum);
+    //   console.log(isSameMonthPastDay);
+    //   console.log(isSameMonthPastDay);
+    // }
+
     if (isPastMonth || isSameMonthPastDay) {
+      // console.log('date passed')
       return (
         <DatePast data={props.date.day} />
       )
     } else {
+      // console.log('date available')
       return (
-        <DateSpace className="dateSpace">
+        <DateSpace className="availableDate">
           <DateVal>
             {props.date.day}
           </DateVal>

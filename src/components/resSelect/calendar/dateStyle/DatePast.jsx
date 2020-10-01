@@ -44,7 +44,7 @@ const DateVal = styled.div`
 
 
 const Date = (props) => (
-  <DateSpace>
+  <DateSpace className="DatePast">
     <DateVal>
       {props.data}
     </DateVal>
