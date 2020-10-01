@@ -10,8 +10,21 @@ let Wrapper = styled.div`
 `;
 
 let Head = styled.div`
-  display: flex;
-  justify-content: space-between;
+display: flex;
+justify-content: space-between;
+color: rgb(34, 34, 34) !important;
+text-align: center !important;
+padding-top: 9px !important;
+padding-bottom: 20px !important;
+caption-side: initial !important;
+`;
+
+let HeadText = styled.div`
+  font-size: 16px !important;
+  line-height: 20px !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 600 !important;
+  color: rgb(34, 34, 34) !important;
 `;
 
 let Arrow = styled.div`
@@ -24,7 +37,14 @@ let Cal = styled.table`
 `;
 
 let Header = styled.th`
-  width: 15px;
+  ${'' /* display: inline-block !important; */}
+  width: 42px;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 600 !important;
+  color: rgb(113, 113, 113) !important;
 `;
 
 const RightCalendar = (props) => {
@@ -45,8 +65,12 @@ const RightCalendar = (props) => {
       <Wrapper>
         <Head>
           <div>{' '}</div>
-          <div>October 2020</div>
-          <Arrow>{'>'}</Arrow>
+          <HeadText>{props.month[0].monthName + ' 2020'}</HeadText>
+          <Arrow>
+            <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'12px', width:'12px'}} display="block" fill="currentcolor">
+              <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fillRule="evenodd"/>
+            </svg>
+          </Arrow>
         </Head>
         <Cal>
           <tbody>
@@ -75,7 +99,7 @@ const RightCalendar = (props) => {
       <Wrapper>
         <Head>
           <div>{' '}</div>
-          <div>October 2020</div>
+          <div>calendar unavailable</div>
           <Arrow>{'>'}</Arrow>
         </Head>
         <Cal>

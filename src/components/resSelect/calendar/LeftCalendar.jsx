@@ -12,6 +12,19 @@ let Wrapper = styled.div`
 let Head = styled.div`
   display: flex;
   justify-content: space-between;
+  color: rgb(34, 34, 34) !important;
+  text-align: center !important;
+  padding-top: 9px !important;
+  padding-bottom: 20px !important;
+  caption-side: initial !important;
+`;
+
+let HeadText = styled.div`
+  font-size: 16px !important;
+  line-height: 20px !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 600 !important;
+  color: rgb(34, 34, 34) !important;
 `;
 
 let Arrow = styled.div`
@@ -23,8 +36,16 @@ let Cal = styled.table`
   justify-content: center;
 `;
 
+
 let Header = styled.th`
-  width: 15px;
+  ${'' /* display: inline-block !important; */}
+  width: 42px;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 600 !important;
+  color: rgb(113, 113, 113) !important;
 `;
 
 
@@ -42,11 +63,17 @@ const LeftCalendar = (props) => {
       }
     }
 
+    console.log(props.month[0].monthName);
+
     return (
       <Wrapper>
         <Head>
-          <Arrow>{'<'}</Arrow>
-          <div>September 2020</div>
+          <Arrow>
+            <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'12px', width:'12px'}} display="block" fill="currentcolor">
+              <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" fillRule="evenodd"/>
+            </svg>
+          </Arrow>
+          <HeadText>{props.month[0].monthName + ' 2020'}</HeadText>
           <div>{' '}</div>
         </Head>
         <Cal>
@@ -74,8 +101,10 @@ const LeftCalendar = (props) => {
     return (
       <Wrapper>
         <Head>
-          <Arrow>{'<'}</Arrow>
-          <div>September 2020</div>
+          <Arrow>
+            {'<'}
+          </Arrow>
+          <div>month unavailable</div>
           <div>{' '}</div>
         </Head>
         <Cal>
