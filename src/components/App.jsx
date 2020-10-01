@@ -10,6 +10,8 @@ import ResSelect from './resSelect/ResSelect.jsx';
 import RatingSummary from './RatingSummary.jsx';
 import CalendarView from './resSelect/calendar/CalendarView.jsx'
 
+import GuestSelect from './guestSelect/GuestSelect.jsx'
+
 //styled-components
 const Wrapper = styled.section`
   top: 50px;
@@ -133,6 +135,7 @@ class App extends React.Component {
           <Fees />
         </Wrapper>
         <CalendarView data={this.state} />
+        <GuestSelect />
       </div>
 
     )
