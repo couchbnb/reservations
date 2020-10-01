@@ -49,6 +49,42 @@ let Summary = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
   margin-left: 10px;
+  order: 1;
+`;
+
+let HeadWrap = styled.section`
+  color: rgb(34, 34, 34) !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 22px !important;
+  line-height: 26px !important;
+`;
+
+let HeadText = styled.h2`
+  color: inherit !important;
+  font-size: 1em !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  margin: 0px !important;
+  padding: 0px !important;
+`;
+
+let Subhead = styled.div`
+  color: rgb(113, 113, 113) !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 18px !important;
+  padding-top: 8px !important;
+`;
+
+let SubheadText = styled.div`
+  line-height: 18px !important;
+  max-height: 36px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: -webkit-box !important;
+  height: 36px !important;
 `;
 
 let Checking = styled.div`
@@ -58,6 +94,7 @@ let Checking = styled.div`
   border-radius: 7px;
   border-width: thin;
   width: 300px;
+  height: 56px;
 `;
 
 let Foot = styled.div`
@@ -85,8 +122,12 @@ const CalendarView = (props) => {
     <Wrapper className="CalendarView">
       <Summary className="summary">
         <div>
-          <div>Select Dates</div>
-          <div>Minimum Stay: 1 night</div>
+          <HeadWrap>
+            <HeadText>Select Dates</HeadText>
+          </HeadWrap>
+          <Subhead>
+            <SubheadText>Minimum Stay: 1 night</SubheadText>
+          </Subhead>
         </div>
         <Checking>
           <CheckIn />

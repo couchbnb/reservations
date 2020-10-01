@@ -10,8 +10,21 @@ let Wrapper = styled.div`
 `;
 
 let Head = styled.div`
-  display: flex;
-  justify-content: space-between;
+display: flex;
+justify-content: space-between;
+color: rgb(34, 34, 34) !important;
+text-align: center !important;
+padding-top: 22px !important;
+padding-bottom: 37px !important;
+caption-side: initial !important;
+`;
+
+let HeadText = styled.div`
+  font-size: 16px !important;
+  line-height: 20px !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 600 !important;
+  color: rgb(34, 34, 34) !important;
 `;
 
 let Arrow = styled.div`
@@ -45,7 +58,7 @@ const RightCalendar = (props) => {
       <Wrapper>
         <Head>
           <div>{' '}</div>
-          <div>October 2020</div>
+          <HeadText>October 2020</HeadText>
           <Arrow>{'>'}</Arrow>
         </Head>
         <Cal>
