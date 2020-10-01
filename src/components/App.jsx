@@ -12,7 +12,6 @@ import CalendarView from './resSelect/calendar/CalendarView.jsx'
 
 //styled-components
 const Wrapper = styled.section`
-  position: sticky;
   top: 50px;
   margin: 50px;
   margin-left: 8.33333%;
