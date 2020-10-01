@@ -11,4 +11,8 @@ describe('LeftCalendar', () => {
     expect(wrapper.length).toEqual(1);
   });
 
+  xit('should create an array of weeks', () => {
+  });
+
+
 })

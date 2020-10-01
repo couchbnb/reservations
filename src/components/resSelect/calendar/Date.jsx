@@ -64,7 +64,7 @@ const Date = (props) => {
       )
     } else {
       return (
-        <DateSpace>
+        <DateSpace className="dateSpace">
           <DateVal>
             {props.date.day}
           </DateVal>
@@ -75,7 +75,7 @@ const Date = (props) => {
       )
     }
   } else {
-    return <DateSpace></DateSpace>
+    return <DateSpace className="dateSpace"></DateSpace>
   }
 }
 

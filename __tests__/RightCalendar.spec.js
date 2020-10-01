@@ -11,7 +11,7 @@ describe('RightCalendar', () => {
     expect(wrapper.length).toEqual(1);
   });
 
-  it('should create an array of weeks', () => {
+  xit('should create an array of weeks', () => {
   });
 
 })
