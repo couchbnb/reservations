@@ -138,6 +138,13 @@ class App extends React.Component {
         selecting: 'end',
         res_start_string: dateString,
       });
+    } else if (this.state.selecting === 'end') {
+      var dateString = `${2020}${date.monthNum}${date.day}`;
+      this.setState({
+        res_end: date,
+        selecting: 'checkout',
+        res_end_string: dateString,
+      })
     }
   }
 

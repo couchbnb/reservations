@@ -54,7 +54,10 @@ const CheckOut = (props) => {
         CHECKOUT
       </CheckOutBox>
       <AddDate>
-        Add date
+        {props.data && props.data.day && (`${props.data.monthNum}/${props.data.day}/20`)}
+        {props.data && !props.data.day && ('Add date')}
+        {!props.data && ('Add date')}
+
       </AddDate>
     </Box>
   )
