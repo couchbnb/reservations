@@ -81,13 +81,12 @@ class Date extends React.Component {
 
   render() {
     if (this.state.isHover) {
-      console.log('rendering')
       return (
         <DateSpaceHover
           className="availableDate"
           onMouseEnter={() => this.setIsHover(true)}
           onMouseLeave={() => this.setIsHover(false)}
-          onMouseClick={() => this.selectDate()}
+          onClick={() => this.selectDate()}
           >
           <DateVal>
             {this.props.day}

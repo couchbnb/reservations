@@ -74,7 +74,7 @@ class App extends React.Component {
     this.selectDate = this.selectDate.bind(this);
   }
 
-  addReservation(resId, data) {
+  addReservation() {
     axios.post('/api/reservation')
       .then(function (response) {
         console.log(response);
@@ -199,7 +199,7 @@ class App extends React.Component {
               <PriceSummary />
               <RatingSummary />
             </Summary>
-            <ResSelect />
+            <ResSelect res_start={this.state.res_start} res_end={this.state.res_end}/>
             <Button className="button">
               <Reserve valid_res={this.state.valid_res} />
             </Button>
