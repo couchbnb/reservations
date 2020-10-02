@@ -56,17 +56,13 @@ const Price = styled.div`
 
 const Date = (props) => {
   if (props.date.day) {
+    // handle past dates
     var isPastMonth = (props.date.monthNum < props.current_date.month);
     var isSameMonthPastDay = props.date.monthNum === props.current_date.month && props.date.day < props.current_date.day;
-    // if (props.test) {
-    //   console.log('test ' + props.test);
-    //   console.log('current date: ' + props.current_date.day);
-    //   console.log('curent month: ' + props.current_date.month);
-    //   console.log('date date: ' + props.date.day);
-    //   console.log('date month: ' + props.date.monthNum);
-    //   console.log(isSameMonthPastDay);
-    //   console.log(isSameMonthPastDay);
-    // }
+
+    // handle reservations
+
+
 
     if (isPastMonth || isSameMonthPastDay) {
       console.log('date passed')

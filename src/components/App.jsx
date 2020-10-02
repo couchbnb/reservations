@@ -64,9 +64,11 @@ class App extends React.Component {
       res_start: {},
       res_end: {},
       valid_res: false,
+      res_list: [],
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
+    this.formatReservations = this.formatReservations.bind(this);
   }
 
   addReservation(resId, data) {
@@ -113,15 +115,55 @@ class App extends React.Component {
   getListingReservation(listingId) {
     var queryString = `/api/reservations?listing_id=${listingId}`;
     var setter = this.setState.bind(this);
+    var resy = this.formatReservations.bind(this);
     axios.get(queryString)
       .then(function (response) {
-        setter({ reservations: response.data });
+        setter({ reservations: response.data }, () => { resy(response.data) } );
       })
       .catch(function(err) {
         if (err) {
           throw err;
         }
       });
+  }
+
+  formatReservations(reservations) {
+    var res = [];
+    // tests whether one month date year is comes before a second
+    var isCurrent = (startYear, startMonth, startDate, endYear, endMonth, endDate) => {
+      var isPastYear = (startYear > endYear);
+      var isPastMonth = (startYear === endYear && startMonth > endMonth);
+      var isPastDate = (startYear === endYear && startMonth === endMonth && startDate > endDate);
+      if (isPastYear || isPastMonth || isPastDate) {
+        return false;
+      }
+      return true;
+    }
+
+    for (var i = 0; i < reservations.length; i++) {
+      var startYear = reservations[i].start_year;
+      var startMonth = reservations[i].start_month;
+      var startDate = reservations[i].start_day;
+      var endYear = reservations[i].end_year;
+      var endMonth = reservations[i].end_month;
+      var endDate = reservations[i].end_day;
+
+      while(isCurrent(startYear, startMonth, startDate, endYear, endMonth, endDate)) {
+        var thisDate = `${startYear}${startMonth}${startDate}`;
+        res.push(thisDate);
+        if (startDate < 31) {
+          startDate++
+        } else if (startMonth < 12) {
+          startDate = 1;
+          startMonth++
+        } else {
+          startDate = 1;
+          startMonth = 0;
+          startYear++
+        }
+      }
+    }
+    this.setState({res_list: res});
   }
 
   render () {
