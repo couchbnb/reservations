@@ -8,9 +8,8 @@ import Fees from './Fees.jsx';
 import Reserve from './Reserve.jsx';
 import ResSelect from './resSelect/ResSelect.jsx';
 import RatingSummary from './RatingSummary.jsx';
-import CalendarView from './resSelect/calendar/CalendarView.jsx'
-
-import GuestSelect from './guestSelect/GuestSelect.jsx'
+import CalendarView from './resSelect/calendar/CalendarView.jsx';
+import GuestSelect from './guestSelect/GuestSelect.jsx';
 
 //styled-components
 const Wrapper = styled.section`

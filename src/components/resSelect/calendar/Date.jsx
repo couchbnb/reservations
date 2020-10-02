@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 //components
-import DatePast from './dateStyle/DatePast.jsx'
+import DatePast from './dateStyle/Past.jsx'
+import DateAvailable from './dateStyle/Available.jsx'
 
 const DateSpace = styled.td`
   margin-left: 1px !important;
@@ -18,42 +19,6 @@ const DateSpace = styled.td`
   color: rgb(34, 34, 34);
 `;
 
-const DateVal = styled.div`
-  margin-left: 1px !important;
-  margin-right: 1px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-direction: column !important;
-  border-radius: 100% !important;
-  position: relative !important;
-  color: rgb(34, 34, 34) !important;
-
-  border: 1.5px solid rgb(255, 255, 255) !important;
-  font-size: 14px !important;
-  line-height: 18px !important;
-  font-weight: 600 !important;
-`;
-
-
-const Value = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: 14px !important;
-
-`;
-
-const Price = styled.div`
-  font-size: 10px;
-  line-height: 12px;
-  color: rgb(113, 113, 113);
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-`;
-
-
-
 const Date = (props) => {
   if (props.date.day) {
     // handle past dates
@@ -62,11 +27,7 @@ const Date = (props) => {
 
     // handle reservations
     var stringDate = `${2020}${props.date.monthNum}${props.date.day}`;
-
-    // console.log(props.res_list);
     var isReserved = props.res_list.includes(stringDate)
-    console.log(stringDate);
-
 
 
     if (isPastMonth || isSameMonthPastDay) {
@@ -81,14 +42,7 @@ const Date = (props) => {
     } else {
       // console.log('date available')
       return (
-        <DateSpace className="availableDate">
-          <DateVal>
-            {props.date.day}
-          </DateVal>
-          <Price>
-            {'$' + props.listing.base_price}
-          </Price>
-        </DateSpace>
+        <DateAvailable className="availableDate" day={props.date.day} base_price={props.listing.base_price} />
       )
     }
   } else {
