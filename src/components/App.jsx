@@ -217,7 +217,7 @@ class App extends React.Component {
               <PriceSummary />
               <RatingSummary />
             </Summary>
-            <ResSelect />
+            <ResSelect res_start={this.state.res_start} res_end={this.state.res_end}/>
             <Button className="button">
               <Reserve valid_res={this.state.valid_res} />
             </Button>
