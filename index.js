@@ -9,6 +9,9 @@ const dates = require('./database/dates.js');
 
 app.use(parser.urlencoded({ extended: false }))
 app.use(parser.json());
+
+
+
 app.use('/', express.static(path.join(__dirname, '/public')))
 
 
@@ -18,14 +21,18 @@ app.listen(port, () => {
 
 
 
-
 // routes
+  // app.get('/listing', (req, res) => {
+  //   var listing_id = req.query.listing_id;
+
+  //   res.sendFiles(path.join(__dirname, '/public'))
+  // })
 
 // get specific listing data
 app.get('/api/listing', (req, res) => {
   // input is a listing ID,
   // console.log(req.body)
-  control.getListing(req.body.listing_id, (err, data)=>{
+  control.getListing(req.query.listing_id, (err, data)=>{
     if (err) {
       console.log(err.name)
       res.sendStatus(500);
@@ -38,7 +45,8 @@ app.get('/api/listing', (req, res) => {
 
 // get reservations for a specific listing
 app.get('/api/reservations', (req, res) => {
-  control.getReservations(req.body.listing_id, (err, data)=>{
+  console.log(req.query)
+  control.getReservations(req.query.listing_id, (err, data)=>{
     if (err) {
       console.log(err.name)
       res.sendStatus(500);

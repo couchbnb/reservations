@@ -66,6 +66,7 @@ class App extends React.Component {
       valid_res: false,
     };
     this.getListingData = this.getListingData.bind(this);
+    this.getListingReservation = this.getListingReservation.bind(this);
   }
 
   addReservation(resId, data) {
@@ -80,10 +81,12 @@ class App extends React.Component {
       });
   }
 
-  getListingData() {
+  getListingData(listing_id) {
     var setter = this.setState.bind(this);
     var current_date = {};
-    axios.get('/api/listing')
+    var getRes = this.getListingReservation;
+    var queryString = `/api/listing?listing_id=${listing_id}`;
+    axios.get(queryString)
       .then(function (response) {
         var newListing = response.data[0];
         var dates = response.data[1];
@@ -98,7 +101,7 @@ class App extends React.Component {
           listing: newListing,
           calendar: dates.blankCal,
           current_date: current_date
-        })
+        }, getRes(newListing.id))
       })
       .catch(function(err) {
         if (err) {
@@ -107,11 +110,12 @@ class App extends React.Component {
       });
   }
 
-  getListingReservation(resId) {
-    // var queryString = `/api/reservation?`
-    axios.get('/api/reservation')
+  getListingReservation(listingId) {
+    var queryString = `/api/reservations?listing_id=${listingId}`;
+    var setter = this.setState.bind(this);
+    axios.get(queryString)
       .then(function (response) {
-        console.log(response);
+        setter({ reservations: response.data });
       })
       .catch(function(err) {
         if (err) {
@@ -161,7 +165,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getListingData();
+    var urlParams = new URLSearchParams(window.location.search);
+    var listing_id = urlParams.get('listing_id');
+    if (listing_id) {
+      this.getListingData(listing_id);
+    } else {
+      this.getListingData();
+    }
   }
 }
 
