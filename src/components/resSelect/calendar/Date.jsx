@@ -61,12 +61,21 @@ const Date = (props) => {
     var isSameMonthPastDay = props.date.monthNum === props.current_date.month && props.date.day < props.current_date.day;
 
     // handle reservations
+    var stringDate = `${2020}${props.date.monthNum}${props.date.day}`;
+
+    // console.log(props.res_list);
+    var isReserved = props.res_list.includes(stringDate)
+    console.log(stringDate);
 
 
 
     if (isPastMonth || isSameMonthPastDay) {
       console.log('date passed')
       return (
+        <DatePast data={props.date.day} />
+      )
+    } else if (isReserved) {
+      return(
         <DatePast data={props.date.day} />
       )
     } else {
