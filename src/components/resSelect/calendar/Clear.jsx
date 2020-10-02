@@ -16,7 +16,7 @@ const Text = styled.div`
 
 const Clear = (props) => {
   return (
-    <Text>Clear dates</Text>
+    <Text onClick={ props.clearDates } >Clear dates</Text>
   )
 }
 

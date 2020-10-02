@@ -5,15 +5,12 @@ import styled from 'styled-components';
 // components
 import LeftCalendar from './LeftCalendar.jsx';
 import RightCalendar from './RightCalendar.jsx';
-// import BkButton from './BkButton.jsx';
-// import FwButton from './FwButton.jsx';
 import CheckIn from '../CheckIn.jsx';
 import CheckOut from '../CheckOut.jsx';
 import Close from './Close.jsx';
 import Clear from './Clear.jsx';
 import Keyboard from './Keyboard.jsx'
 
-// import { ReactComponent as Keyboard } from '../../../assets/keyboard.svg'
 
 
 // styled-components
@@ -160,7 +157,7 @@ const CalendarView = (props) => {
       <Foot className="foot">
         <Keyboard />
         <Closer>
-          <Clear />
+          <Clear clearDates={props.clearDates} />
           <Close />
         </Closer>
       </Foot>

@@ -71,7 +71,8 @@ class App extends React.Component {
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
     this.formatReservations = this.formatReservations.bind(this);
-    this.selectDate = this.selectDate.bind(this);
+    // this.selectDate = this.selectDate.bind(this);
+    // this.clearDates = this.clearDates.bind(this);
   }
 
   addReservation() {
@@ -148,6 +149,11 @@ class App extends React.Component {
     }
   }
 
+  clearDates() {
+    console.log('clearing dates')
+    this.setState({ res_start: {}, res_end: {}});
+  }
+
   formatReservations(reservations) {
     var res = [];
     // tests whether one month date year is comes before a second
@@ -212,7 +218,11 @@ class App extends React.Component {
             </Button>
             <Fees />
           </Wrapper>
-          <CalendarView data={this.state} selectDate={this.selectDate.bind(this)} />
+          <CalendarView
+            data={this.state}
+            selectDate={this.selectDate.bind(this)}
+            clearDates={this.clearDates.bind(this)}
+          />
           <GuestSelect />
         </div>
       )
@@ -229,7 +239,11 @@ class App extends React.Component {
               <Reserve valid_res={this.state.valid_res} />
             </Button>
           </Wrapper>
-          <CalendarView data={this.state} selectDate={this.selectDate.bind(this)} />
+          <CalendarView
+            data={this.state}
+            selectDate={this.selectDate.bind(this)}
+            clearDates={this.clearDates.bind(this)}
+          />
           <GuestSelect />
         </div>
       )

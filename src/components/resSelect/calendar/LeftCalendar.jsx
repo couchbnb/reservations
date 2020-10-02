@@ -96,6 +96,7 @@ const LeftCalendar = (props) => {
                   current_date={props.current_date}
                   res_list={props.res_list}
                   selectDate={props.selectDate}
+
                   >
                 </RowDates>
               }
