@@ -64,6 +64,8 @@ class App extends React.Component {
       res_end: {},
       valid_res: false,
       res_list: [],
+      res_start_string: '',
+      res_end_string: '',
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
@@ -163,6 +165,15 @@ class App extends React.Component {
       }
     }
     this.setState({res_list: res});
+  }
+
+  updateReservation(resStartObj, resEndObj) {
+    if (resStartObj) {
+      this.setState({res_start: resStartObj});
+    }
+    if (resEndObj) {
+      this.setState({res_end: resEndObj});
+    }
   }
 
   render () {

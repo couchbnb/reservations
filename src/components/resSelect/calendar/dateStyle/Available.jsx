@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DateSpace = styled.td`
+  cursor: pointer;
   margin-left: 1px !important;
   margin-right: 1px !important;
   width: 40px;
