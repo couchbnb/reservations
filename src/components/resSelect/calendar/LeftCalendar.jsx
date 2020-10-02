@@ -36,7 +36,6 @@ let Cal = styled.table`
   justify-content: center;
 `;
 
-
 let Header = styled.th`
   ${'' /* display: inline-block !important; */}
   width: 42px;
@@ -56,14 +55,12 @@ const LeftCalendar = (props) => {
       weeks[0].push({});
     }
     var week = 0;
-    for (var i = 0; i < props.month.length; i++) {
-      weeks[week].push(props.month[i]);
-      if (props.month[i].dayIndex === 6) {
+    for (var j = 0; j < props.month.length; j++) {
+      weeks[week].push(props.month[j]);
+      if (props.month[j].dayIndex === 6) {
         week++;
       }
     }
-
-    console.log(props.month[0].monthName);
 
     return (
       <Wrapper>
@@ -89,7 +86,18 @@ const LeftCalendar = (props) => {
             </tr>
             {weeks.map(
               (week) => {
-                return <RowDates data={week} key={Math.random()} listing={props.listing} reservations={props.reservations} current_date={props.current_date} res_list={props.res_list} ></RowDates>
+                console.log('row week')
+                return <RowDates
+                  state={props.data}
+                  data={week}
+                  key={Math.random()}
+                  listing={props.listing}
+                  reservations={props.reservations}
+                  current_date={props.current_date}
+                  res_list={props.res_list}
+                  selectDate={props.selectDate}
+                  >
+                </RowDates>
               }
             )}
           </tbody>

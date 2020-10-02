@@ -66,10 +66,12 @@ class App extends React.Component {
       res_list: [],
       res_start_string: '',
       res_end_string: '',
+      selecting: 'start'
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
     this.formatReservations = this.formatReservations.bind(this);
+    this.selectDate = this.selectDate.bind(this);
   }
 
   addReservation(resId, data) {
@@ -126,6 +128,17 @@ class App extends React.Component {
           throw err;
         }
       });
+  }
+
+  selectDate(date) {
+    if (this.state.selecting === 'start') {
+      var dateString = `${2020}${date.monthNum}${date.day}`;
+      this.setState({
+        res_start: date,
+        selecting: 'end',
+        res_start_string: dateString,
+      });
+    }
   }
 
   formatReservations(reservations) {
@@ -192,7 +205,7 @@ class App extends React.Component {
             </Button>
             <Fees />
           </Wrapper>
-          <CalendarView data={this.state} />
+          <CalendarView data={this.state} selectDate={this.selectDate.bind(this)} />
           <GuestSelect />
         </div>
       )
@@ -209,7 +222,7 @@ class App extends React.Component {
               <Reserve valid_res={this.state.valid_res} />
             </Button>
           </Wrapper>
-          <CalendarView data={this.state} />
+          <CalendarView data={this.state} selectDate={this.selectDate.bind(this)} />
           <GuestSelect />
         </div>
       )

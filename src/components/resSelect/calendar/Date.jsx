@@ -42,7 +42,14 @@ const Date = (props) => {
     } else {
       // console.log('date available')
       return (
-        <DateAvailable className="availableDate" day={props.date.day} base_price={props.listing.base_price} />
+        <DateAvailable
+          className="availableDate"
+          day={props.date.day}
+          date={props.date}
+          base_price={props.listing.base_price}
+          state={props.data}
+          selectDate={props.selectDate}
+        />
       )
     }
   } else {

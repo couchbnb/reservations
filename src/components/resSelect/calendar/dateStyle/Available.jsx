@@ -7,7 +7,6 @@ const DateSpace = styled.td`
   margin-right: 1px !important;
   width: 40px;
   height: 39px;
-
   border: 0px;
   padding: 0px;
   border-top-left-radius: 4px;
@@ -24,7 +23,6 @@ const DateSpaceHover = styled.td`
   margin-right: 1px !important;
   width: 40px;
   height: 39px;
-
   border: 0px;
   padding: 0px;
   border-top-left-radius: 4px;
@@ -51,7 +49,6 @@ const DateVal = styled.div`
   font-weight: 600 !important;
 `;
 
-
 const Price = styled.div`
   font-size: 10px;
   line-height: 12px;
@@ -65,7 +62,9 @@ class Date extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isHover: false
+      isHover: false,
+      res_start: this.props.state.res_start,
+      res_end: this.props.state.res_end
     }
     this.setIsHover = this.setIsHover.bind(this)
   }
@@ -74,13 +73,21 @@ class Date extends React.Component {
     this.setState({ isHover: bool })
   }
 
+  selectDate() {
+    this.props.selectDate(this.props.date);
+  }
+
+
+
   render() {
     if (this.state.isHover) {
+      console.log('rendering')
       return (
         <DateSpaceHover
           className="availableDate"
           onMouseEnter={() => this.setIsHover(true)}
           onMouseLeave={() => this.setIsHover(false)}
+          onMouseClick={() => this.selectDate()}
           >
           <DateVal>
             {this.props.day}

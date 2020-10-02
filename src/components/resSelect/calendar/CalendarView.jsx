@@ -131,14 +131,30 @@ const CalendarView = (props) => {
           </Subhead>
         </div>
         <Checking>
-          <CheckIn />
-          <CheckOut />
+          <CheckIn data={props.data.res_start} />
+          <CheckOut data={props.data.res_end} />
         </Checking>
       </Summary>
 
       <Calend className="calend">
-        <LeftCalendar month={month1} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} res_list={props.data.res_list} />
-        <RightCalendar month={month2} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} res_list={props.data.res_list} />
+        <LeftCalendar
+          month={month1}
+          data={props.data}
+          listing={props.data.listing}
+          reservations={props.data.reservations}
+          current_date={props.data.current_date}
+          res_list={props.data.res_list}
+          selectDate={props.selectDate}
+          />
+        <RightCalendar
+          month={month2}
+          data={props.data}
+          listing={props.data.listing}
+          reservations={props.data.reservations}
+          current_date={props.data.current_date}
+          res_list={props.data.res_list}
+          selectDate={props.selectDate}
+          />
       </Calend>
 
       <Foot className="foot">
