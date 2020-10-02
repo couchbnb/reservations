@@ -63,10 +63,10 @@ let ClickToView = styled.button`
   margin: 0px !important;
   padding: 0px !important;
   user-select: auto !important;
-  color: rgb(113, 113, 113) !important;
+  color: rgb(34, 34, 34) !important;
   text-decoration: underline !important;
   border-radius: 4px !important;
-  font-weight: 400 !important;
+  font-weight: 325 !important;
   outline: none !important;
 `;
 

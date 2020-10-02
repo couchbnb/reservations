@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 //components
-import DatePast from './dateStyle/DatePast.jsx'
+import DatePast from './dateStyle/Past.jsx'
+import DateAvailable from './dateStyle/Available.jsx'
 
 const DateSpace = styled.td`
   margin-left: 1px !important;
@@ -18,72 +19,30 @@ const DateSpace = styled.td`
   color: rgb(34, 34, 34);
 `;
 
-const DateVal = styled.div`
-  margin-left: 1px !important;
-  margin-right: 1px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-direction: column !important;
-  border-radius: 100% !important;
-  position: relative !important;
-  color: rgb(34, 34, 34) !important;
-
-  border: 1.5px solid rgb(255, 255, 255) !important;
-  font-size: 14px !important;
-  line-height: 18px !important;
-  font-weight: 600 !important;
-`;
-
-
-const Value = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: 14px !important;
-
-`;
-
-const Price = styled.div`
-  font-size: 10px;
-  line-height: 12px;
-  color: rgb(113, 113, 113);
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-`;
-
-
-
 const Date = (props) => {
   if (props.date.day) {
+    // handle past dates
     var isPastMonth = (props.date.monthNum < props.current_date.month);
     var isSameMonthPastDay = props.date.monthNum === props.current_date.month && props.date.day < props.current_date.day;
-    // if (props.test) {
-    //   console.log('test ' + props.test);
-    //   console.log('current date: ' + props.current_date.day);
-    //   console.log('curent month: ' + props.current_date.month);
-    //   console.log('date date: ' + props.date.day);
-    //   console.log('date month: ' + props.date.monthNum);
-    //   console.log(isSameMonthPastDay);
-    //   console.log(isSameMonthPastDay);
-    // }
+
+    // handle reservations
+    var stringDate = `${2020}${props.date.monthNum}${props.date.day}`;
+    var isReserved = props.res_list.includes(stringDate)
+
 
     if (isPastMonth || isSameMonthPastDay) {
       console.log('date passed')
       return (
         <DatePast data={props.date.day} />
       )
+    } else if (isReserved) {
+      return(
+        <DatePast data={props.date.day} />
+      )
     } else {
       // console.log('date available')
       return (
-        <DateSpace className="availableDate">
-          <DateVal>
-            {props.date.day}
-          </DateVal>
-          <Price>
-            {'$' + props.listing.base_price}
-          </Price>
-        </DateSpace>
+        <DateAvailable className="availableDate" day={props.date.day} base_price={props.listing.base_price} />
       )
     }
   } else {
