@@ -24,9 +24,9 @@ text-align: center !important;
 */
 
 const Highlight = styled.div`
-  height: 103%;
-  width: 97%;
-  margin-left: 1px !important;
+  height: 105%;
+  width: 100%;
+  margin-left: 0px !important;
   margin-right: 1px !important;
   display: flex !important;
   align-items: center !important;
@@ -41,6 +41,8 @@ const Highlight = styled.div`
   font-size: 14px !important;
   line-height: 18px !important;
   font-weight: 600 !important;
+  box-sizing: border-box !important;
+
 `;
 
 const DateVal = styled.div`

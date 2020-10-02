@@ -76,7 +76,21 @@ class App extends React.Component {
   }
 
   addReservation() {
-    axios.post('/api/reservation')
+    var res_start = this.state.res_start;
+    var res_end = this.state.res_end;
+    var getRes = this.getListingReservation;
+    var listing_id = this.state.listing.id;
+    var clearDates = this.clearDates.bind(this);
+
+    axios.post('/api/reservations', {
+      listing_id: listing_id,
+      start_year: 2020,
+      start_month: res_start.monthNum,
+      start_day: res_start.day,
+      end_year: 2020,
+      end_month: res_end.monthNum,
+      end_day: res_end.day
+    })
       .then(function (response) {
         console.log(response);
       })
@@ -84,7 +98,13 @@ class App extends React.Component {
         if (err) {
           throw err;
         }
-      });
+      })
+      .then(function() {
+        getRes(listing_id);
+      })
+      .then(function() {
+        clearDates();
+      })
   }
 
   getListingData(listing_id) {
@@ -92,6 +112,7 @@ class App extends React.Component {
     var current_date = {};
     var getRes = this.getListingReservation;
     var queryString = `/api/listing?listing_id=${listing_id}`;
+
     axios.get(queryString)
       .then(function (response) {
         var newListing = response.data[0];
@@ -122,6 +143,7 @@ class App extends React.Component {
     var resy = this.formatReservations.bind(this);
     axios.get(queryString)
       .then(function (response) {
+        console.log('got res data')
         setter({ reservations: response.data }, () => { resy(response.data) } );
       })
       .catch(function(err) {
@@ -145,6 +167,7 @@ class App extends React.Component {
         res_end: date,
         selecting: 'checkout',
         res_end_string: dateString,
+        valid_res: true,
       })
     }
   }
@@ -214,7 +237,7 @@ class App extends React.Component {
             </Summary>
             <ResSelect res_start={this.state.res_start} res_end={this.state.res_end}/>
             <Button className="button">
-              <Reserve valid_res={this.state.valid_res} />
+              <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
             </Button>
             <Fees />
           </Wrapper>
