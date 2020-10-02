@@ -151,7 +151,7 @@ class App extends React.Component {
 
   clearDates() {
     console.log('clearing dates')
-    this.setState({ res_start: {}, res_end: {}});
+    this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start' });
   }
 
   formatReservations(reservations) {
