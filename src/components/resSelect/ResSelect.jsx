@@ -69,43 +69,27 @@ const PopUp = styled.div`
   display: none;
 `;
 
-class ResSelect extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      calView: false,
-      guestView: false,
-    }
-  }
+const ResSelect = (props) => {
 
-  toggleCalendar(){
-
-  }
-
-  toggleGuest(){
-
-  }
-
-  render() {
-    return (
-      <Box className="ResSelect">
-        <PopUp>
-          <CalendarView
-            data={this.props.data}
-            selectDate={this.props.selectDate}
-            clearDates={this.props.clearDates}
-          />
-        </PopUp>
-        <CheckInOut>
-          <InnerWrap>
-            <CheckIn data={this.props.res_start} />
-            <CheckOut data={this.props.res_end} />
-          </InnerWrap>
-        </CheckInOut>
-        <Guests />
-      </Box>
-    )
-  }
+  return (
+    <Box className="ResSelect">
+      <PopUp>
+        <CalendarView
+          data={props.data}
+          selectDate={props.selectDate}
+          clearDates={props.clearDates}
+        />
+      </PopUp>
+      <CheckInOut onClick={props.toggleCalendar}>
+        <InnerWrap>
+          <CheckIn data={props.res_start} />
+          <CheckOut data={props.res_end} />
+        </InnerWrap>
+      </CheckInOut>
+      <Guests />
+    </Box>
+  )
 }
+
 
 export default ResSelect;
