@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import CheckIn from './CheckIn.jsx';
 import CheckOut from './CheckOut.jsx';
 import Guests from './Guests.jsx';
+import CalendarView from './calendar/CalendarView.jsx'
 
 const Box = styled.div`
   border-style: solid;
@@ -17,7 +18,8 @@ const Box = styled.div`
   flex-direction: column;
   margin-bottom: 16px;
   box-sizing: border-box;
-  width: 100%
+  width: 100%;
+  position: relative;
 `;
 
 const CheckInOut = styled.div`
@@ -59,19 +61,52 @@ const InnerWrap = styled.div`
   outline: 0px !important;
 `;
 
+const PopUpHide = styled.div`
+  position: absolute;
+  z-index: 1;
+  right: -30px;
+  top: -20px;
+  display: none;
+`;
+
+const PopUpDisplay = styled.div`
+  position: absolute;
+  z-index: 1;
+  right: -30px;
+  top: -20px;
+  display: block;
+`;
 
 const ResSelect = (props) => {
+
   return (
     <Box className="ResSelect">
-      <CheckInOut>
+      {props.data.calView ? (<PopUpDisplay>
+          <CalendarView
+            toggleCalendar={props.toggleCalendar}
+            data={props.data}
+            selectDate={props.selectDate}
+            clearDates={props.clearDates}
+          />
+        </PopUpDisplay>) : (<PopUpHide>
+          <CalendarView
+            toggleCalendar={props.toggleCalendar}
+            data={props.data}
+            selectDate={props.selectDate}
+            clearDates={props.clearDates}
+          />
+        </PopUpHide>)
+      }
+      <CheckInOut onClick={props.toggleCalendar}>
         <InnerWrap>
           <CheckIn data={props.res_start} />
           <CheckOut data={props.res_end} />
         </InnerWrap>
       </CheckInOut>
-      <Guests />
+      <Guests toggleGuest={props.toggleGuest} guestView={props.guestView} />
     </Box>
   )
 }
+
 
 export default ResSelect;

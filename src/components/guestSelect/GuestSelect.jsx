@@ -10,8 +10,7 @@ const Inherited = styled.div`
   font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 20px !important;
-  margin-top: 50px
-
+  margin-top: 50px;
 `;
 
 
@@ -47,7 +46,7 @@ const GuestSelect = (props) => {
         <GuestRow type="Children" description="Ages 2–12" count={0} />
         <GuestRow type="Infants" description="Under 2" count={0} />
         <GuestPolicy>11 guests maximum. Infants don’t count toward the number of guests.</GuestPolicy>
-        <Close/>
+        <Close toggleGuest={props.toggleGuest} />
       </Wrapper>
     </Inherited>
   )

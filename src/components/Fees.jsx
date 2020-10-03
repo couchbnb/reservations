@@ -100,46 +100,54 @@ let TotalAmt = styled.span`
   font-weight: 650 !important;
 `;
 
-const Fees = (props) => (
-  <Wrapper>
-    <Message>
-      <MessageLi>Your reservation will save</MessageLi>
-    </Message>
-    <List>
-      <Row>
-        <LineItem>
-          <ClickToView>
-            Shows price/night
-          </ClickToView>
-          <Amount>$300</Amount>
-        </LineItem>
-      </Row>
-      <Row>
-        <LineItem>
-          <ClickToView>Cleaning Fee</ClickToView>
-          <Amount>$300</Amount>
-        </LineItem>
-      </Row>
-      <Row>
-        <LineItem>
-          <ClickToView>Service Fee</ClickToView>
-          <Amount>$300</Amount>
-        </LineItem>
-      </Row>
-      <Row>
-        <LineItem>
-          <ClickToView>Occupancy taxes and fees</ClickToView>
-          <Amount>$300</Amount>
-        </LineItem>
-      </Row>
-      <Total>
-        <TotalLi>
-          <TotalLabel>Total</TotalLabel>
-          <TotalAmt>$1000</TotalAmt>
-        </TotalLi>
-      </Total>
-    </List>
-  </Wrapper>
-);
+const Fees = (props) => {
+  if (props.valid_res){
+    return (
+      <Wrapper>
+        <Message>
+          <MessageLi>Your reservation will save</MessageLi>
+        </Message>
+        <List>
+          <Row>
+            <LineItem>
+              <ClickToView>
+                Shows price/night
+              </ClickToView>
+              <Amount>$300</Amount>
+            </LineItem>
+          </Row>
+          <Row>
+            <LineItem>
+              <ClickToView>Cleaning Fee</ClickToView>
+              <Amount>$300</Amount>
+            </LineItem>
+          </Row>
+          <Row>
+            <LineItem>
+              <ClickToView>Service Fee</ClickToView>
+              <Amount>$300</Amount>
+            </LineItem>
+          </Row>
+          <Row>
+            <LineItem>
+              <ClickToView>Occupancy taxes and fees</ClickToView>
+              <Amount>$300</Amount>
+            </LineItem>
+          </Row>
+          <Total>
+            <TotalLi>
+              <TotalLabel>Total</TotalLabel>
+              <TotalAmt>$1000</TotalAmt>
+            </TotalLi>
+          </Total>
+        </List>
+      </Wrapper>
+    )
+  } else {
+    return (
+      <div></div>
+    )
+  }
+};
 
 export default Fees;

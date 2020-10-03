@@ -8,20 +8,23 @@ import Fees from './Fees.jsx';
 import Reserve from './Reserve.jsx';
 import ResSelect from './resSelect/ResSelect.jsx';
 import RatingSummary from './RatingSummary.jsx';
-import CalendarView from './resSelect/calendar/CalendarView.jsx';
+// import CalendarView from './resSelect/calendar/CalendarView.jsx';
 import GuestSelect from './guestSelect/GuestSelect.jsx';
 
 //styled-components
+const Grid = styled.div`
+`;
+
 const Wrapper = styled.section`
   top: 50px;
   margin: 50px;
-  margin-left: 8.33333%;
+  margin-left: 50%;
   margin-bottom: 80px;
   margin-top: 48px;
   padding: 24px;
 
   box-sizing: border-box;
-  width: 300px;
+  max-width: 300px;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
@@ -66,7 +69,9 @@ class App extends React.Component {
       res_list: [],
       res_start_string: '',
       res_end_string: '',
-      selecting: 'start'
+      selecting: 'start',
+      calView: false,
+      guestView: false,
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
@@ -174,7 +179,7 @@ class App extends React.Component {
 
   clearDates() {
     console.log('clearing dates')
-    this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start' });
+    this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start', valid_res: false });
   }
 
   formatReservations(reservations) {
@@ -225,52 +230,45 @@ class App extends React.Component {
     }
   }
 
-  render () {
+  toggleCalendar(){
+    var toggle = !this.state.calView;
+    this.setState({calView: toggle});
+  }
 
-    if (this.state.valid_res) {
-      return (
-        <div className="App">
-          <Wrapper className="wrapper">
-            <Summary className="summary">
-              <PriceSummary />
-              <RatingSummary />
-            </Summary>
-            <ResSelect res_start={this.state.res_start} res_end={this.state.res_end}/>
-            <Button className="button">
-              <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
-            </Button>
-            <Fees />
-          </Wrapper>
-          <CalendarView
+  toggleGuest(){
+  var toggle = !this.state.guestView;
+  this.setState({guestView: toggle});
+  }
+
+  render () {
+    return (
+      <Grid className="App">
+        <Wrapper className="wrapper">
+          <Summary className="summary">
+            <PriceSummary />
+            <RatingSummary />
+          </Summary>
+          <ResSelect
+            res_start={this.state.res_start}
+            res_end={this.state.res_end}
+            calView={this.state.calView}
+            guestView={this.state.guestView}
+            toggleCalendar={this.toggleCalendar.bind(this)}
+            toggleGuest={this.toggleGuest.bind(this)}
             data={this.state}
             selectDate={this.selectDate.bind(this)}
-            clearDates={this.clearDates.bind(this)}
-          />
-          <GuestSelect />
-        </div>
-      )
-    } else {
-      return (
-        <div className="App">
-          <Wrapper className="wrapper">
-            <Summary className="summary">
-              <PriceSummary />
-              <RatingSummary />
-            </Summary>
-            <ResSelect res_start={this.state.res_start} res_end={this.state.res_end}/>
-            <Button className="button">
-              <Reserve valid_res={this.state.valid_res} />
-            </Button>
-          </Wrapper>
-          <CalendarView
-            data={this.state}
-            selectDate={this.selectDate.bind(this)}
-            clearDates={this.clearDates.bind(this)}
-          />
-          <GuestSelect />
-        </div>
-      )
-    }
+            clearDates={this.clearDates.bind(this)} />
+          <Button className="button">
+            <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
+          </Button>
+          <Fees valid_res={this.state.valid_res}/>
+        </Wrapper>
+        {/* <CalendarView
+
+        /> */}
+        {/* <GuestSelect /> */}
+      </Grid>
+    )
   }
 
   componentDidMount() {
