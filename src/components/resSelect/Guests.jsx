@@ -106,11 +106,15 @@ const Guests = (props) => {
             (<GuestCount>{'1 guest'}</GuestCount>)
           }
         </div>
-        <Arrow>
+        {props.guestView ? (<Arrow>
+          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'16px', width:'16px'}} display="block" fill="currentcolor">
+            <path d="m1.71 13.71a1 1 0 1 1 -1.42-1.42l8-8a1 1 0 0 1 1.41 0l8 8a1 1 0 1 1 -1.41 1.42l-7.29-7.29z" fillRule="evenodd"/>
+          </svg>
+        </Arrow>) : (<Arrow>
           <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'16px', width:'16px'}} display="block" fill="currentcolor">
             <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd"/>
           </svg>
-        </Arrow>
+        </Arrow>)}
       </Box>
       {
         props.guestView ? (<PopUpDisplay>
