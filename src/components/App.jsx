@@ -72,6 +72,11 @@ class App extends React.Component {
       selecting: 'start',
       calView: false,
       guestView: false,
+      guests: {
+        adults: 0,
+        children: 0,
+        infants: 0,
+      }
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
@@ -230,14 +235,22 @@ class App extends React.Component {
     }
   }
 
-  toggleCalendar(){
+  toggleCalendar() {
     var toggle = !this.state.calView;
     this.setState({calView: toggle});
   }
 
-  toggleGuest(){
+  toggleGuest() {
   var toggle = !this.state.guestView;
   this.setState({guestView: toggle});
+  }
+
+  setGuests(adults, children, infants) {
+    console.log('adults ' + adults)
+    console.log('children ' + children)
+    console.log('infants ' + infants)
+
+    this.setState({ guests: { adults, children, infants } })
   }
 
   render () {
@@ -257,7 +270,8 @@ class App extends React.Component {
             toggleGuest={this.toggleGuest.bind(this)}
             data={this.state}
             selectDate={this.selectDate.bind(this)}
-            clearDates={this.clearDates.bind(this)} />
+            clearDates={this.clearDates.bind(this)}
+            setGuests={this.setGuests.bind(this)} />
           <Button className="button">
             <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
           </Button>

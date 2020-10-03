@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import GuestRow from './GuestRow.jsx'
@@ -38,18 +38,47 @@ const GuestPolicy = styled.div`
   margin-bottom: 16px !important;
 `;
 
-const GuestSelect = (props) => {
-  return (
-    <Inherited>
-      <Wrapper>
-        <GuestRow type="Adults" count={0} />
-        <GuestRow type="Children" description="Ages 2–12" count={0} />
-        <GuestRow type="Infants" description="Under 2" count={0} />
-        <GuestPolicy>11 guests maximum. Infants don’t count toward the number of guests.</GuestPolicy>
-        <Close toggleGuest={props.toggleGuest} />
-      </Wrapper>
-    </Inherited>
-  )
-};
+class GuestSelect extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = this.props.guests;
+  }
+
+  updateGuestCount(count, type) {
+    if (count < 0) {
+      return;
+    }
+    console.log(type);
+    var adults, children, infants
+    if (type === 'Adults') {
+      adults = count;
+      children = this.props.guests.children;
+      infants = this.props.guests.infants;
+    } else if (type === 'Children') {
+      adults = this.props.guests.adults;
+      children = count;
+      infants = this.props.guests.infants;
+    } else if (type === 'Infants') {
+      adults = this.props.guests.adults;
+      children = this.props.guests.children;
+      infants = count;
+    }
+    this.props.setGuests(adults, children, infants);
+  }
+
+  render() {
+    return (
+      <Inherited>
+        <Wrapper>
+          <GuestRow type="Adults" count={this.props.guests.adults} updateGuestCount={this.updateGuestCount.bind(this)} />
+          <GuestRow type="Children" description="Ages 2–12" count={this.props.guests.children} updateGuestCount={this.updateGuestCount.bind(this)} />
+          <GuestRow type="Infants" description="Under 2" count={this.props.guests.infants} updateGuestCount={this.updateGuestCount.bind(this)} />
+          <GuestPolicy>11 guests maximum. Infants don’t count toward the number of guests.</GuestPolicy>
+          <Close toggleGuest={this.props.toggleGuest} />
+        </Wrapper>
+      </Inherited>
+    )
+  }
+}
 
 export default GuestSelect;

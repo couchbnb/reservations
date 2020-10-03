@@ -103,7 +103,7 @@ const ResSelect = (props) => {
           <CheckOut data={props.res_end} />
         </InnerWrap>
       </CheckInOut>
-      <Guests toggleGuest={props.toggleGuest} guestView={props.guestView} />
+      <Guests toggleGuest={props.toggleGuest} guestView={props.guestView} guests={props.data.guests} setGuests={props.setGuests} />
     </Box>
   )
 }

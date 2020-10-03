@@ -112,9 +112,9 @@ const Guests = (props) => {
       </Box>
       {
         props.guestView ? (<PopUpDisplay>
-          <GuestSelect toggleGuest={props.toggleGuest} />
+          <GuestSelect toggleGuest={props.toggleGuest} guests={props.guests} setGuests={props.setGuests} />
         </PopUpDisplay>) : (<PopUpHide>
-          <GuestSelect toggleGuest={props.toggleGuest} />
+          <GuestSelect toggleGuest={props.toggleGuest} guests={props.guests} setGuests={props.setGuests} />
         </PopUpHide>)
       }
     </Wrapper>

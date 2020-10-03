@@ -73,13 +73,23 @@ const GuestRow = (props) => {
         </Description>
       </Info>
       <Counter>
-        <Icon>
+        <Icon onClick={
+          () => {
+            var newCount = props.count - 1;
+            props.updateGuestCount(newCount, props.type);
+          }
+        }>
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height:'12px', width:'12px'}} display="block" fill="none" stroke="currentcolor" strokeWidth="5.33333" overflow="visible">
             <path d="m2 16h28"/>
           </svg>
         </Icon>
         <div>{props.count}</div>
-        <Icon>
+        <Icon onClick={
+          () => {
+            var newCount = props.count + 1;
+            props.updateGuestCount(newCount, props.type);
+          }
+        }>
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height:'12px', width:'12px'}} display="block" fill="none" stroke="currentcolor" strokeWidth="5.33333" overflow="visible">
             <path d="m2 16h28m-14-14v28"/>
           </svg>
