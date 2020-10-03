@@ -65,8 +65,8 @@ const ResSelect = (props) => {
     <Box className="ResSelect">
       <CheckInOut>
         <InnerWrap>
-          <CheckIn />
-          <CheckOut />
+          <CheckIn data={props.res_start} />
+          <CheckOut data={props.res_end} />
         </InnerWrap>
       </CheckInOut>
       <Guests />

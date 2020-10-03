@@ -59,7 +59,10 @@ const CheckIn = (props) => {
         CHECK-IN
       </CheckInBox>
       <AddDate>
-        Add date
+        {props.data && props.data.day && (`${props.data.monthNum}/${props.data.day}/20`)}
+        {props.data && !props.data.day && ('Add date')}
+        {!props.data && ('Add date')}
+
       </AddDate>
     </Box>
   )

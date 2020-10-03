@@ -66,14 +66,31 @@ class App extends React.Component {
       res_list: [],
       res_start_string: '',
       res_end_string: '',
+      selecting: 'start'
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
     this.formatReservations = this.formatReservations.bind(this);
+    // this.selectDate = this.selectDate.bind(this);
+    // this.clearDates = this.clearDates.bind(this);
   }
 
-  addReservation(resId, data) {
-    axios.post('/api/reservation')
+  addReservation() {
+    var res_start = this.state.res_start;
+    var res_end = this.state.res_end;
+    var getRes = this.getListingReservation;
+    var listing_id = this.state.listing.id;
+    var clearDates = this.clearDates.bind(this);
+
+    axios.post('/api/reservations', {
+      listing_id: listing_id,
+      start_year: 2020,
+      start_month: res_start.monthNum,
+      start_day: res_start.day,
+      end_year: 2020,
+      end_month: res_end.monthNum,
+      end_day: res_end.day
+    })
       .then(function (response) {
         console.log(response);
       })
@@ -81,7 +98,13 @@ class App extends React.Component {
         if (err) {
           throw err;
         }
-      });
+      })
+      .then(function() {
+        getRes(listing_id);
+      })
+      .then(function() {
+        clearDates();
+      })
   }
 
   getListingData(listing_id) {
@@ -89,6 +112,7 @@ class App extends React.Component {
     var current_date = {};
     var getRes = this.getListingReservation;
     var queryString = `/api/listing?listing_id=${listing_id}`;
+
     axios.get(queryString)
       .then(function (response) {
         var newListing = response.data[0];
@@ -119,6 +143,7 @@ class App extends React.Component {
     var resy = this.formatReservations.bind(this);
     axios.get(queryString)
       .then(function (response) {
+        console.log('got res data')
         setter({ reservations: response.data }, () => { resy(response.data) } );
       })
       .catch(function(err) {
@@ -126,6 +151,30 @@ class App extends React.Component {
           throw err;
         }
       });
+  }
+
+  selectDate(date) {
+    if (this.state.selecting === 'start') {
+      var dateString = `${2020}${date.monthNum}${date.day}`;
+      this.setState({
+        res_start: date,
+        selecting: 'end',
+        res_start_string: dateString,
+      });
+    } else if (this.state.selecting === 'end') {
+      var dateString = `${2020}${date.monthNum}${date.day}`;
+      this.setState({
+        res_end: date,
+        selecting: 'checkout',
+        res_end_string: dateString,
+        valid_res: true,
+      })
+    }
+  }
+
+  clearDates() {
+    console.log('clearing dates')
+    this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start' });
   }
 
   formatReservations(reservations) {
@@ -186,13 +235,17 @@ class App extends React.Component {
               <PriceSummary />
               <RatingSummary />
             </Summary>
-            <ResSelect />
+            <ResSelect res_start={this.state.res_start} res_end={this.state.res_end}/>
             <Button className="button">
-              <Reserve valid_res={this.state.valid_res} />
+              <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
             </Button>
             <Fees />
           </Wrapper>
-          <CalendarView data={this.state} />
+          <CalendarView
+            data={this.state}
+            selectDate={this.selectDate.bind(this)}
+            clearDates={this.clearDates.bind(this)}
+          />
           <GuestSelect />
         </div>
       )
@@ -204,12 +257,16 @@ class App extends React.Component {
               <PriceSummary />
               <RatingSummary />
             </Summary>
-            <ResSelect />
+            <ResSelect res_start={this.state.res_start} res_end={this.state.res_end}/>
             <Button className="button">
               <Reserve valid_res={this.state.valid_res} />
             </Button>
           </Wrapper>
-          <CalendarView data={this.state} />
+          <CalendarView
+            data={this.state}
+            selectDate={this.selectDate.bind(this)}
+            clearDates={this.clearDates.bind(this)}
+          />
           <GuestSelect />
         </div>
       )

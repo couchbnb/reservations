@@ -6,7 +6,20 @@ import Date from './Date.jsx';
 const RowDates = (props) => {
   return (
     <tr>
-      {props.data.map((date) => <Date date={date} key={Math.random()} listing={props.listing} reservations={props.reservations} current_date={props.current_date} res_list={props.res_list} />)}
+      {props.data.map((date) => {
+        return (
+          <Date
+            data={props.state}
+            date={date}
+            key={Math.random()}
+            listing={props.listing}
+            reservations={props.reservations}
+            current_date={props.current_date}
+            res_list={props.res_list}
+            selectDate={props.selectDate}
+          />
+        )
+      })}
     </tr>
   )
 }

@@ -85,7 +85,18 @@ const RightCalendar = (props) => {
             </tr>
             {weeks.map(
               (week) => {
-                return <RowDates data={week} key={Math.random()} listing={props.listing} reservations={props.reservations} current_date={props.current_date} res_list={props.res_list} ></RowDates>
+                return <RowDates
+                  state={props.data}
+                  data={week}
+                  key={Math.random()}
+                  listing={props.listing}
+                  reservations={props.reservations}
+                  current_date={props.current_date}
+                  res_list={props.res_list}
+                  selectDate={props.selectDate}
+
+                  >
+                </RowDates>
               }
             )}
           </tbody>

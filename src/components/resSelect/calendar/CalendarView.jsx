@@ -5,15 +5,12 @@ import styled from 'styled-components';
 // components
 import LeftCalendar from './LeftCalendar.jsx';
 import RightCalendar from './RightCalendar.jsx';
-// import BkButton from './BkButton.jsx';
-// import FwButton from './FwButton.jsx';
 import CheckIn from '../CheckIn.jsx';
 import CheckOut from '../CheckOut.jsx';
 import Close from './Close.jsx';
 import Clear from './Clear.jsx';
 import Keyboard from './Keyboard.jsx'
 
-// import { ReactComponent as Keyboard } from '../../../assets/keyboard.svg'
 
 
 // styled-components
@@ -131,20 +128,36 @@ const CalendarView = (props) => {
           </Subhead>
         </div>
         <Checking>
-          <CheckIn />
-          <CheckOut />
+          <CheckIn data={props.data.res_start} />
+          <CheckOut data={props.data.res_end} />
         </Checking>
       </Summary>
 
       <Calend className="calend">
-        <LeftCalendar month={month1} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} res_list={props.data.res_list} />
-        <RightCalendar month={month2} listing={props.data.listing} reservations={props.data.reservations} current_date={props.data.current_date} res_list={props.data.res_list} />
+        <LeftCalendar
+          month={month1}
+          data={props.data}
+          listing={props.data.listing}
+          reservations={props.data.reservations}
+          current_date={props.data.current_date}
+          res_list={props.data.res_list}
+          selectDate={props.selectDate}
+          />
+        <RightCalendar
+          month={month2}
+          data={props.data}
+          listing={props.data.listing}
+          reservations={props.data.reservations}
+          current_date={props.data.current_date}
+          res_list={props.data.res_list}
+          selectDate={props.selectDate}
+          />
       </Calend>
 
       <Foot className="foot">
         <Keyboard />
         <Closer>
-          <Clear />
+          <Clear clearDates={props.clearDates} />
           <Close />
         </Closer>
       </Foot>

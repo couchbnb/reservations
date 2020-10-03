@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 const ReserveButton = styled.div`
-
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ const Text = styled.div`
 const Reserve = (props) => {
   if (props.valid_res) {
     return (
-      <ReserveButton className="Reserve">
+      <ReserveButton className="Reserve" onClick={ props.addReservation }>
         <Text>
           Reserve
         </Text>
