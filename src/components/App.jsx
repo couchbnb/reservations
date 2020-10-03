@@ -73,7 +73,7 @@ class App extends React.Component {
       calView: false,
       guestView: false,
       guests: {
-        adults: 0,
+        adults: 1,
         children: 0,
         infants: 0,
       }

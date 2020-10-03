@@ -93,6 +93,7 @@ const PopUpHide = styled.div`
 
 
 const Guests = (props) => {
+  var total = props.guests.adults + props.guests.children + props.guests.infants
   return (
     <Wrapper>
       <Box onClick={props.toggleGuest}>
@@ -100,9 +101,10 @@ const Guests = (props) => {
           <GuestBox>
             Guest
           </GuestBox>
-          <GuestCount>
-            1 guest
-          </GuestCount>
+          {total > 1 ?
+            (<GuestCount>{`${total} guests`}</GuestCount>) :
+            (<GuestCount>{'1 guest'}</GuestCount>)
+          }
         </div>
         <Arrow>
           <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'16px', width:'16px'}} display="block" fill="currentcolor">
