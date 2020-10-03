@@ -10,7 +10,8 @@ const Inherited = styled.div`
   font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 20px !important;
-  margin-top: 50px
+  margin-top: 50px;
+  positon: relative;
 
 `;
 

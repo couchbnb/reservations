@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import GuestSelect from '../guestSelect/GuestSelect.jsx';
+
 const Box = styled.div`
   position: relative !important;
   flex: 1 1 0% !important;
@@ -71,22 +73,24 @@ const Arrow = styled.div`
 
 const Guests = (props) => {
   return (
-    <Box>
-      <div>
-        <GuestBox>
-          Guest
-        </GuestBox>
-        <GuestCount>
-          1 guest
-        </GuestCount>
-      </div>
-      <Arrow>
-        <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'16px', width:'16px'}} display="block" fill="currentcolor">
-          <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fill-rule="evenodd"/>
-        </svg>
-      </Arrow>
-
-    </Box>
+    <div>
+      <Box>
+        <div>
+          <GuestBox>
+            Guest
+          </GuestBox>
+          <GuestCount>
+            1 guest
+          </GuestCount>
+        </div>
+        <Arrow>
+          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'16px', width:'16px'}} display="block" fill="currentcolor">
+            <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fill-rule="evenodd"/>
+          </svg>
+        </Arrow>
+      </Box>
+      <GuestSelect />
+    </div>
   )
 }
 
