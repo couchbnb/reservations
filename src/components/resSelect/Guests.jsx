@@ -3,8 +3,12 @@ import styled from 'styled-components';
 
 import GuestSelect from '../guestSelect/GuestSelect.jsx';
 
+const Wrapper = styled.div`
+  position: relative;
+`;
+
 const Box = styled.div`
-  position: relative !important;
+  position: relative; !important;
   flex: 1 1 0% !important;
   padding: 0px !important;
   width: 100% !important;
@@ -70,15 +74,18 @@ const Arrow = styled.div`
   color: rgb(34, 34, 34) !important;
 `;
 
-const DropWrap = styled.div`
-  display: block;
-  box-sizing: border-box;
+const PopUp = styled.div`
+  position: absolute;
+  z-index: 1;
+  right: -4px;
+  top: 8px;
+  display: none;
 `;
 
 
 const Guests = (props) => {
   return (
-    <div>
+    <Wrapper>
       <Box>
         <div>
           <GuestBox>
@@ -90,14 +97,14 @@ const Guests = (props) => {
         </div>
         <Arrow>
           <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'16px', width:'16px'}} display="block" fill="currentcolor">
-            <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fill-rule="evenodd"/>
+            <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd"/>
           </svg>
         </Arrow>
       </Box>
-      <div>
+      <PopUp>
         <GuestSelect />
-      </div>
-    </div>
+      </PopUp>
+    </Wrapper>
   )
 }
 

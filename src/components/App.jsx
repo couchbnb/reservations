@@ -8,20 +8,23 @@ import Fees from './Fees.jsx';
 import Reserve from './Reserve.jsx';
 import ResSelect from './resSelect/ResSelect.jsx';
 import RatingSummary from './RatingSummary.jsx';
-import CalendarView from './resSelect/calendar/CalendarView.jsx';
+// import CalendarView from './resSelect/calendar/CalendarView.jsx';
 import GuestSelect from './guestSelect/GuestSelect.jsx';
 
 //styled-components
+const Grid = styled.div`
+`;
+
 const Wrapper = styled.section`
   top: 50px;
   margin: 50px;
-  margin-left: 8.33333%;
+  margin-left: 50%;
   margin-bottom: 80px;
   margin-top: 48px;
   padding: 24px;
 
   box-sizing: border-box;
-  width: 300px;
+  max-width: 300px;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
@@ -226,10 +229,9 @@ class App extends React.Component {
   }
 
   render () {
-
     if (this.state.valid_res) {
       return (
-        <div className="App">
+        <Grid className="App">
           <Wrapper className="wrapper">
             <Summary className="summary">
               <PriceSummary />
@@ -241,12 +243,13 @@ class App extends React.Component {
             </Button>
             <Fees />
           </Wrapper>
-          <CalendarView
+          {/* <CalendarView
             data={this.state}
             selectDate={this.selectDate.bind(this)}
             clearDates={this.clearDates.bind(this)}
-          />
-        </div>
+          /> */}
+          <GuestSelect />
+        </Grid>
       )
     } else {
       return (
@@ -256,16 +259,22 @@ class App extends React.Component {
               <PriceSummary />
               <RatingSummary />
             </Summary>
-            <ResSelect res_start={this.state.res_start} res_end={this.state.res_end}/>
+            <ResSelect
+              res_start={this.state.res_start}
+              res_end={this.state.res_end}
+              data={this.state}
+              selectDate={this.selectDate.bind(this)}
+              clearDates={this.clearDates.bind(this)}/>
             <Button className="button">
               <Reserve valid_res={this.state.valid_res} />
             </Button>
           </Wrapper>
-          <CalendarView
+          {/* <CalendarView
             data={this.state}
             selectDate={this.selectDate.bind(this)}
             clearDates={this.clearDates.bind(this)}
-          />
+          /> */}
+          {/* <GuestSelect /> */}
         </div>
       )
     }

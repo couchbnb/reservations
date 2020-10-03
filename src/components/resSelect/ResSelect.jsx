@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import CheckIn from './CheckIn.jsx';
 import CheckOut from './CheckOut.jsx';
 import Guests from './Guests.jsx';
+import CalendarView from './calendar/CalendarView.jsx'
 
 const Box = styled.div`
   border-style: solid;
@@ -17,7 +18,8 @@ const Box = styled.div`
   flex-direction: column;
   margin-bottom: 16px;
   box-sizing: border-box;
-  width: 100%
+  width: 100%;
+  position: relative;
 `;
 
 const CheckInOut = styled.div`
@@ -59,19 +61,51 @@ const InnerWrap = styled.div`
   outline: 0px !important;
 `;
 
+const PopUp = styled.div`
+  position: absolute;
+  z-index: 1;
+  right: -30px;
+  top: -20px;
+  display: none;
+`;
 
-const ResSelect = (props) => {
-  return (
-    <Box className="ResSelect">
-      <CheckInOut>
-        <InnerWrap>
-          <CheckIn data={props.res_start} />
-          <CheckOut data={props.res_end} />
-        </InnerWrap>
-      </CheckInOut>
-      <Guests />
-    </Box>
-  )
+class ResSelect extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      calView: false,
+      guestView: false,
+    }
+  }
+
+  toggleCalendar(){
+
+  }
+
+  toggleGuest(){
+
+  }
+
+  render() {
+    return (
+      <Box className="ResSelect">
+        <PopUp>
+          <CalendarView
+            data={this.props.data}
+            selectDate={this.props.selectDate}
+            clearDates={this.props.clearDates}
+          />
+        </PopUp>
+        <CheckInOut>
+          <InnerWrap>
+            <CheckIn data={this.props.res_start} />
+            <CheckOut data={this.props.res_end} />
+          </InnerWrap>
+        </CheckInOut>
+        <Guests />
+      </Box>
+    )
+  }
 }
 
 export default ResSelect;
