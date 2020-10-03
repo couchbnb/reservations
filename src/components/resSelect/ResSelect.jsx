@@ -61,7 +61,7 @@ const InnerWrap = styled.div`
   outline: 0px !important;
 `;
 
-const PopUp = styled.div`
+const PopUpHide = styled.div`
   position: absolute;
   z-index: 1;
   right: -30px;
@@ -69,17 +69,32 @@ const PopUp = styled.div`
   display: none;
 `;
 
+const PopUpDisplay = styled.div`
+  position: absolute;
+  z-index: 1;
+  right: -30px;
+  top: -20px;
+  display: block;
+`;
+
 const ResSelect = (props) => {
 
   return (
     <Box className="ResSelect">
-      <PopUp>
-        <CalendarView
-          data={props.data}
-          selectDate={props.selectDate}
-          clearDates={props.clearDates}
-        />
-      </PopUp>
+      {props.data.calView ? (<PopUpDisplay>
+          <CalendarView
+            data={props.data}
+            selectDate={props.selectDate}
+            clearDates={props.clearDates}
+          />
+        </PopUpDisplay>) : (<PopUpHide>
+          <CalendarView
+            data={props.data}
+            selectDate={props.selectDate}
+            clearDates={props.clearDates}
+          />
+        </PopUpHide>)
+      }
       <CheckInOut onClick={props.toggleCalendar}>
         <InnerWrap>
           <CheckIn data={props.res_start} />
