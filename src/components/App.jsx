@@ -246,7 +246,6 @@ class App extends React.Component {
             selectDate={this.selectDate.bind(this)}
             clearDates={this.clearDates.bind(this)}
           />
-          <GuestSelect />
         </div>
       )
     } else {
@@ -267,7 +266,6 @@ class App extends React.Component {
             selectDate={this.selectDate.bind(this)}
             clearDates={this.clearDates.bind(this)}
           />
-          <GuestSelect />
         </div>
       )
     }

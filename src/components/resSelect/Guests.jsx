@@ -70,6 +70,11 @@ const Arrow = styled.div`
   color: rgb(34, 34, 34) !important;
 `;
 
+const DropWrap = styled.div`
+  display: block;
+  box-sizing: border-box;
+`;
+
 
 const Guests = (props) => {
   return (
@@ -89,7 +94,9 @@ const Guests = (props) => {
           </svg>
         </Arrow>
       </Box>
-      <GuestSelect />
+      <div>
+        <GuestSelect />
+      </div>
     </div>
   )
 }
