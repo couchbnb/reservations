@@ -32,7 +32,7 @@ const Button = styled.div`
 const Close = (props) => {
   return (
     <Wrapper>
-      <Button>Close</Button>
+      <Button onClick={props.toggleGuest}>Close</Button>
     </Wrapper>
   )
 }

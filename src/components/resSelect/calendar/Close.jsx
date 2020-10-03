@@ -21,7 +21,7 @@ const Button = styled.div`
 
 const Close = (props) => {
   return (
-    <Button>Close</Button>
+    <Button onClick={props.toggleCalendar}>Close</Button>
   )
 }
 

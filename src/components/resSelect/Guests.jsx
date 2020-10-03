@@ -22,6 +22,7 @@ const Box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer !important;
 `;
 
 const GuestBox = styled.div`
@@ -41,6 +42,7 @@ const GuestBox = styled.div`
   white-space: nowrap !important;
   display: flex;
 
+
 `;
 
 const GuestCount = styled.div`
@@ -52,7 +54,6 @@ const GuestCount = styled.div`
   font-family: inherit !important;
   font-size: 14px !important;
   line-height: 18px !important;
-  cursor: pointer !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
@@ -74,7 +75,15 @@ const Arrow = styled.div`
   color: rgb(34, 34, 34) !important;
 `;
 
-const PopUp = styled.div`
+const PopUpDisplay = styled.div`
+  position: absolute;
+  z-index: 1;
+  right: -4px;
+  top: 8px;
+  display: block;
+`;
+
+const PopUpHide = styled.div`
   position: absolute;
   z-index: 1;
   right: -4px;
@@ -86,7 +95,7 @@ const PopUp = styled.div`
 const Guests = (props) => {
   return (
     <Wrapper>
-      <Box>
+      <Box onClick={props.toggleGuest}>
         <div>
           <GuestBox>
             Guest
@@ -101,9 +110,13 @@ const Guests = (props) => {
           </svg>
         </Arrow>
       </Box>
-      <PopUp>
-        <GuestSelect />
-      </PopUp>
+      {
+        props.guestView ? (<PopUpDisplay>
+          <GuestSelect toggleGuest={props.toggleGuest} />
+        </PopUpDisplay>) : (<PopUpHide>
+          <GuestSelect toggleGuest={props.toggleGuest} />
+        </PopUpHide>)
+      }
     </Wrapper>
   )
 }

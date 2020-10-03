@@ -83,12 +83,14 @@ const ResSelect = (props) => {
     <Box className="ResSelect">
       {props.data.calView ? (<PopUpDisplay>
           <CalendarView
+            toggleCalendar={props.toggleCalendar}
             data={props.data}
             selectDate={props.selectDate}
             clearDates={props.clearDates}
           />
         </PopUpDisplay>) : (<PopUpHide>
           <CalendarView
+            toggleCalendar={props.toggleCalendar}
             data={props.data}
             selectDate={props.selectDate}
             clearDates={props.clearDates}
@@ -101,7 +103,7 @@ const ResSelect = (props) => {
           <CheckOut data={props.res_end} />
         </InnerWrap>
       </CheckInOut>
-      <Guests />
+      <Guests toggleGuest={props.toggleGuest} guestView={props.guestView} />
     </Box>
   )
 }

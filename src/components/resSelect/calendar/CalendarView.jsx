@@ -158,7 +158,7 @@ const CalendarView = (props) => {
         <Keyboard />
         <Closer>
           <Clear clearDates={props.clearDates} />
-          <Close />
+          <Close toggleCalendar={props.toggleCalendar}/>
         </Closer>
       </Foot>
     </Wrapper>
