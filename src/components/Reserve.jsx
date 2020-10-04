@@ -31,7 +31,7 @@ const Reserve = (props) => {
     )
   } else {
     return (
-      <ReserveButton className="Reserve">
+      <ReserveButton className="Reserve" onClick={ props.toggleCalendar }>
         <Text>
           Check Availability
         </Text>

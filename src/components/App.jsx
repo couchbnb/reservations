@@ -277,7 +277,7 @@ class App extends React.Component {
             selectDate={this.selectDate.bind(this)}
             clearDates={this.clearDates.bind(this)} />
           <Button className="button">
-            <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
+            <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)} toggleCalendar={this.toggleCalendar.bind(this)} />
           </Button>
           <Fees valid_res={this.state.valid_res} listing={this.state.listing} res_nights_length={this.state.res_nights_length} />
         </Wrapper>
