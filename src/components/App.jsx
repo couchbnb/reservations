@@ -190,6 +190,7 @@ class App extends React.Component {
         res_end_string: dateString,
         valid_res: true,
         res_nights_length: length,
+        calView: false,
       })
     }
   }

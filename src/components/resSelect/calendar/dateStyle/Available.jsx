@@ -63,7 +63,7 @@ const Hover = styled.div`
   border: 1.5px solid rgb(34, 34, 34) !important;
   position: absolute;
   top: 0px;
-  left: 0px;
+  left: -1px;
   right: 0px;
   bottom: 0px;
   z-index: 2;
