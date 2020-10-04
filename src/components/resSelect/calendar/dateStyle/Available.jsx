@@ -100,7 +100,7 @@ class Date extends React.Component {
         onMouseLeave={() => this.setIsHover(false)}
         onClick={() => this.selectDate()}
         >
-      {this.state.isHover ? <Hover></Hover> : <div></div>}
+        {this.state.isHover ? <Hover></Hover> : <div></div>}
         <DateVal>
           {this.props.day}
         </DateVal>
