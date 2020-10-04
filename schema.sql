@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS listings (
   tax FLOAT (4, 4) NOT NULL,
   service_fee FLOAT (4, 4) NOT NULL,
   cleaning_fee FLOAT (6, 2) NOT NULL,
+  review_average FLOAT (3, 2) NOT NULL,
+  review_count INT NOT NULL,
   PRIMARY KEY (id)
 );
 

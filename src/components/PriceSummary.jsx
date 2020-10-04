@@ -23,7 +23,7 @@ const Night = styled.div`
 
 const PriceSummary = (props) => (
   <Wrapper className="PriceSummary">
-    <Dollar>$100</Dollar>
+    <Dollar>{`$${props.listing.base_price}`}</Dollar>
     <Night>/ night</Night>
   </Wrapper>
 );

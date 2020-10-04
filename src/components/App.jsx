@@ -72,6 +72,7 @@ class App extends React.Component {
       selecting: 'start',
       calView: false,
       guestView: false,
+      res_nights_length: 0,
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
@@ -165,21 +166,37 @@ class App extends React.Component {
         res_start: date,
         selecting: 'end',
         res_start_string: dateString,
+        res_nights_length: 0,
       });
     } else if (this.state.selecting === 'end') {
       var dateString = `${2020}${date.monthNum}${date.day}`;
+
+      // finds length of potential reservation:
+      var length = 0;
+      var startDate = this.state.res_start;
+      var startDateString = this.state.res_start_string;
+      while (startDateString !== dateString) {
+        length++;
+
+        // traverse calendar and set a new string for comparison
+        startDate = this.state.calendar[startDate.monthNum][startDate.day] || this.state.calendar[startDate.monthNum + 1][0]
+        startDateString = `${2020}${startDate.monthNum}${startDate.day}`;
+        console.log(startDateString);
+      }
+
       this.setState({
         res_end: date,
         selecting: 'checkout',
         res_end_string: dateString,
         valid_res: true,
+        res_nights_length: length,
       })
     }
   }
 
   clearDates() {
     console.log('clearing dates')
-    this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start', valid_res: false });
+    this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start', valid_res: false, res_nights_length: 0 });
   }
 
   formatReservations(reservations) {
@@ -230,23 +247,23 @@ class App extends React.Component {
     }
   }
 
-  toggleCalendar(){
+  toggleCalendar() {
     var toggle = !this.state.calView;
     this.setState({calView: toggle});
   }
 
-  toggleGuest(){
+  toggleGuest() {
   var toggle = !this.state.guestView;
   this.setState({guestView: toggle});
   }
 
-  render () {
+  render() {
     return (
       <Grid className="App">
         <Wrapper className="wrapper">
           <Summary className="summary">
-            <PriceSummary />
-            <RatingSummary />
+            <PriceSummary listing={this.state.listing} />
+            <RatingSummary listing={this.state.listing} />
           </Summary>
           <ResSelect
             res_start={this.state.res_start}
@@ -261,7 +278,7 @@ class App extends React.Component {
           <Button className="button">
             <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
           </Button>
-          <Fees valid_res={this.state.valid_res}/>
+          <Fees valid_res={this.state.valid_res} listing={this.state.listing} res_nights_length={this.state.res_nights_length} />
         </Wrapper>
         {/* <CalendarView
 
