@@ -57,11 +57,34 @@ const Icon = styled.button`
   border-radius: 50% !important;
 `;
 
-const Message = styled.div`
-
+const GreyIcon = styled.button`
+  width: 32px !important;
+  height: 32px !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: rgb(235, 235, 235) !important;
+  color: rgb(235, 235, 235) !important;
+  font-family: inherit !important;
+  outline: none !important;
+  touch-action: manipulation !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgb(255, 255, 255) !important;
+  border-radius: 50% !important;
 `;
 
 const GuestRow = (props) => {
+  var minCount = 0;
+  if (props.type === 'Adults') {
+    minCount = 1
+  }
   return (
     <Wrapper>
       <Info>
@@ -73,13 +96,36 @@ const GuestRow = (props) => {
         </Description>
       </Info>
       <Counter>
-        <Icon>
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height:'12px', width:'12px'}} display="block" fill="none" stroke="currentcolor" strokeWidth="5.33333" overflow="visible">
-            <path d="m2 16h28"/>
-          </svg>
-        </Icon>
+        {props.count > minCount ?
+          (<Icon onClick={
+            () => {
+              var newCount = props.count - 1;
+              props.updateGuestCount(newCount, props.type);
+            }
+          }>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height:'12px', width:'12px'}} display="block" fill="none" stroke="currentcolor" strokeWidth="5.33333" overflow="visible">
+              <path d="m2 16h28"/>
+            </svg>
+          </Icon>) :
+          (<GreyIcon onClick={
+            () => {
+              var newCount = props.count - 1;
+              props.updateGuestCount(newCount, props.type);
+            }
+          }>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height:'12px', width:'12px'}} display="block" fill="none" stroke="currentcolor" strokeWidth="5.33333" overflow="visible">
+              <path d="m2 16h28"/>
+            </svg>
+          </GreyIcon>)
+
+        }
         <div>{props.count}</div>
-        <Icon>
+        <Icon onClick={
+          () => {
+            var newCount = props.count + 1;
+            props.updateGuestCount(newCount, props.type);
+          }
+        }>
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{height:'12px', width:'12px'}} display="block" fill="none" stroke="currentcolor" strokeWidth="5.33333" overflow="visible">
             <path d="m2 16h28m-14-14v28"/>
           </svg>
