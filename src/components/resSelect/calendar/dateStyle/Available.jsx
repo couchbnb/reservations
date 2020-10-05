@@ -15,23 +15,23 @@ const DateSpace = styled.td`
   color: rgb(34, 34, 34);
   border-radius: 100% !important;
   border: 1.5px solid rgb(255, 255, 255) !important;
+  position: relative;
 `;
 
-const DateSpaceHover = styled.td`
-  cursor: pointer;
-  margin-left: 1px !important;
-  margin-right: 1px !important;
-  width: 40px;
-  height: 39px;
-  border: 0px;
-  padding: 0px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  background: rgb(255, 255, 255);
-  color: rgb(34, 34, 34);
-  border-radius: 100% !important;
-  border: 1.5px solid rgb(34, 34, 34) !important;
-`;
+// const DateSpaceHover = styled.td`
+//   cursor: pointer;
+//   margin-left: 1px !important;
+//   margin-right: 1px !important;
+//   width: 40px;
+//   height: 39px;
+//   border: 0px;
+//   padding: 0px;
+//   border-top-left-radius: 4px;
+//   border-bottom-left-radius: 4px;
+//   background: rgb(255, 255, 255);
+//   color: rgb(34, 34, 34);
+
+// `;
 
 const DateVal = styled.div`
   margin-left: 1px !important;
@@ -58,6 +58,19 @@ const Price = styled.div`
   justify-content: center;
 `;
 
+const Hover = styled.div`
+  border-radius: 100% !important;
+  border: 1.5px solid rgb(34, 34, 34) !important;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+`;
+
 class Date extends React.Component {
   constructor(props) {
     super(props)
@@ -80,38 +93,22 @@ class Date extends React.Component {
 
 
   render() {
-    if (this.state.isHover) {
-      return (
-        <DateSpaceHover
-          className="availableDate"
-          onMouseEnter={() => this.setIsHover(true)}
-          onMouseLeave={() => this.setIsHover(false)}
-          onClick={() => this.selectDate()}
-          >
-          <DateVal>
-            {this.props.day}
-          </DateVal>
-          <Price>
-            {'$' + this.props.base_price}
-          </Price>
-        </DateSpaceHover>
-      )
-    } else {
-      return (
-        <DateSpace
-          className="availableDate"
-          onMouseEnter={() => this.setIsHover(true)}
-          onMouseLeave={() => this.setIsHover(false)}
-          >
-          <DateVal>
-            {this.props.day}
-          </DateVal>
-          <Price>
-            {'$' + this.props.base_price}
-          </Price>
-        </DateSpace>
-      )
-    }
+    return (
+      <DateSpace
+        className="availableDate"
+        onMouseEnter={() => this.setIsHover(true)}
+        onMouseLeave={() => this.setIsHover(false)}
+        onClick={() => this.selectDate()}
+        >
+        {this.state.isHover ? <Hover></Hover> : <div></div>}
+        <DateVal>
+          {this.props.day}
+        </DateVal>
+        <Price>
+          {'$' + this.props.base_price}
+        </Price>
+      </DateSpace>
+    )
   }
 }
 

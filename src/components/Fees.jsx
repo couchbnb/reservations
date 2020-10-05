@@ -101,6 +101,11 @@ let TotalAmt = styled.span`
 `;
 
 const Fees = (props) => {
+  var reservation_fee = props.listing.base_price * props.res_nights_length;
+  var cleaning_fee = Math.round(props.listing.cleaning_fee);
+  var service_fee = Math.round(reservation_fee * props.listing.service_fee);
+  var tax = Math.round(reservation_fee * props.listing.tax);
+  var grandTotal = Math.round(reservation_fee + cleaning_fee + service_fee + tax);
   if (props.valid_res){
     return (
       <Wrapper>
@@ -111,33 +116,33 @@ const Fees = (props) => {
           <Row>
             <LineItem>
               <ClickToView>
-                Shows price/night
+                {`$${props.listing.base_price} for ${props.res_nights_length} nights`}
               </ClickToView>
-              <Amount>$300</Amount>
+              <Amount>{`$${reservation_fee}`}</Amount>
             </LineItem>
           </Row>
           <Row>
             <LineItem>
               <ClickToView>Cleaning Fee</ClickToView>
-              <Amount>$300</Amount>
+              <Amount>{`$${cleaning_fee}`}</Amount>
             </LineItem>
           </Row>
           <Row>
             <LineItem>
               <ClickToView>Service Fee</ClickToView>
-              <Amount>$300</Amount>
+              <Amount>{`$${service_fee}`}</Amount>
             </LineItem>
           </Row>
           <Row>
             <LineItem>
               <ClickToView>Occupancy taxes and fees</ClickToView>
-              <Amount>$300</Amount>
+              <Amount>{`$${tax}`}</Amount>
             </LineItem>
           </Row>
           <Total>
             <TotalLi>
               <TotalLabel>Total</TotalLabel>
-              <TotalAmt>$1000</TotalAmt>
+              <TotalAmt>{`$${grandTotal}`}</TotalAmt>
             </TotalLi>
           </Total>
         </List>

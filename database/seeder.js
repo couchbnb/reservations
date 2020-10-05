@@ -3,7 +3,7 @@ const { connection } = require('./index');
 
 // config seed
 const seedConfig = {
-  advanceDays: 60,
+  advanceDays: 75,
   maxResLength: 14,
   listingCount: 100,
   bookingsCount: 5
@@ -21,7 +21,7 @@ connection.query('DELETE FROM listings', (err, rows) => {
 
 //date generation
 var getDates = () => {
-  var monthSet = [ 9, 10, 11, 12, 01, 02, 03 ];
+  var monthSet = [ 9, 10, 11, 12, 1, 2, 3 ];
   var year = [2020, 2021]
   var dateList = [];
 
@@ -53,13 +53,15 @@ const dateList = getDates();
 
 // seed listings
 var insertListing = (num)=>{
-  var queryString = 'INSERT INTO listings(base_price, tax, service_fee, cleaning_fee) VALUES ';
+  var queryString = 'INSERT INTO listings(base_price, tax, service_fee, cleaning_fee, review_average, review_count) VALUES ';
   for (var i = 0; i < num; i++) {
     var base_price = faker.commerce.price();
     var tax_rate = .09
     var service_fee_rate = .17
     var cleaning_fee = faker.commerce.price();
-    var value = `( ${base_price} , ${tax_rate} , ${service_fee_rate}, ${cleaning_fee} ), `;
+    var review_average = faker.random.number({min: 3, max: 4}) + (0.01 * faker.random.number({min: 10, max: 99}));
+    var review_count = faker.random.number({min: 15, max: 1000, });
+    var value = `( ${base_price} , ${tax_rate} , ${service_fee_rate}, ${cleaning_fee}, ${review_average}, ${review_count} ), `;
     queryString += value;
   }
   queryString = queryString.slice(0, -2);
