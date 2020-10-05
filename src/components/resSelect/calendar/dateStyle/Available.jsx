@@ -62,7 +62,7 @@ const Hover = styled.div`
   border-radius: 100% !important;
   border: 1.5px solid rgb(34, 34, 34) !important;
   position: absolute;
-  top: 0px;
+  top: -1px;
   left: -1px;
   right: 0px;
   bottom: 0px;

@@ -73,6 +73,11 @@ class App extends React.Component {
       calView: false,
       guestView: false,
       res_nights_length: 0,
+      guests: {
+        adults: 1,
+        children: 0,
+        infants: 0,
+      }
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
@@ -258,7 +263,15 @@ class App extends React.Component {
   this.setState({guestView: toggle});
   }
 
-  render() {
+  setGuests(adults, children, infants) {
+    console.log('adults ' + adults)
+    console.log('children ' + children)
+    console.log('infants ' + infants)
+
+    this.setState({ guests: { adults, children, infants } })
+  }
+
+  render () {
     return (
       <Grid className="App">
         <Wrapper className="wrapper">
@@ -275,7 +288,8 @@ class App extends React.Component {
             toggleGuest={this.toggleGuest.bind(this)}
             data={this.state}
             selectDate={this.selectDate.bind(this)}
-            clearDates={this.clearDates.bind(this)} />
+            clearDates={this.clearDates.bind(this)}
+            setGuests={this.setGuests.bind(this)} />
           <Button className="button">
             <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
           </Button>

@@ -93,6 +93,7 @@ const PopUpHide = styled.div`
 
 
 const Guests = (props) => {
+  var total = props.guests.adults + props.guests.children + props.guests.infants
   return (
     <Wrapper>
       <Box onClick={props.toggleGuest}>
@@ -100,21 +101,26 @@ const Guests = (props) => {
           <GuestBox>
             Guest
           </GuestBox>
-          <GuestCount>
-            1 guest
-          </GuestCount>
+          {total > 1 ?
+            (<GuestCount>{`${total} guests`}</GuestCount>) :
+            (<GuestCount>{'1 guest'}</GuestCount>)
+          }
         </div>
-        <Arrow>
+        {props.guestView ? (<Arrow>
+          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'16px', width:'16px'}} display="block" fill="currentcolor">
+            <path d="m1.71 13.71a1 1 0 1 1 -1.42-1.42l8-8a1 1 0 0 1 1.41 0l8 8a1 1 0 1 1 -1.41 1.42l-7.29-7.29z" fillRule="evenodd"/>
+          </svg>
+        </Arrow>) : (<Arrow>
           <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height:'16px', width:'16px'}} display="block" fill="currentcolor">
             <path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd"/>
           </svg>
-        </Arrow>
+        </Arrow>)}
       </Box>
       {
         props.guestView ? (<PopUpDisplay>
-          <GuestSelect toggleGuest={props.toggleGuest} />
+          <GuestSelect toggleGuest={props.toggleGuest} guests={props.guests} setGuests={props.setGuests} />
         </PopUpDisplay>) : (<PopUpHide>
-          <GuestSelect toggleGuest={props.toggleGuest} />
+          <GuestSelect toggleGuest={props.toggleGuest} guests={props.guests} setGuests={props.setGuests} />
         </PopUpHide>)
       }
     </Wrapper>
