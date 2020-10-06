@@ -22,16 +22,10 @@ app.listen(port, () => {
 
 
 // routes
-  // app.get('/listing', (req, res) => {
-  //   var listing_id = req.query.listing_id;
-
-  //   res.sendFiles(path.join(__dirname, '/public'))
-  // })
 
 // get specific listing data
 app.get('/api/listing', (req, res) => {
   // input is a listing ID,
-  // console.log(req.body)
   control.getListing(req.query.listing_id, (err, data)=>{
     if (err) {
       console.log(err.name)
