@@ -2,7 +2,6 @@ const model = require('./model.js')
 
 module.exports = {
   getListing: (listing, callback) => {
-    // console.log(listing);
     if (listing) {
       model.getListing(listing, callback);
     } else {

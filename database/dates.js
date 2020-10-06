@@ -15,8 +15,6 @@ var generateYears = () => {
   var first = new Date(`1 January ${1900 + calYear}`);
   // find the first day of the week for that year
   var dowIndex = first.getDay()
-  var firstDay = daysOfWeek[dowIndex];
-  //console.log('its ' + firstDay);
   var year = []
   for (var i = 0; i < daysInYear.length; i++) {
     year.push([]);
