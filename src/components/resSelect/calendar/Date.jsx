@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import DatePast from './dateStyle/Past.jsx';
 import DateAvailable from './dateStyle/Available.jsx';
 import DateSelected from './dateStyle/Selected.jsx';
+import PotentialReservation from './dateStyle/PotentialReservation.jsx';
 
 const DateSpace = styled.td`
   margin-left: 1px !important;
@@ -28,7 +29,6 @@ const Date = (props) => {
 
     // handle reservations
     var stringDate = `${2020}${props.date.monthNum}${props.date.day}`;
-    var isReserved = props.res_list.includes(stringDate)
 
     if (props.data.res_start_string === stringDate || props.data.res_end_string === stringDate) {
       return (
@@ -46,9 +46,19 @@ const Date = (props) => {
       return (
         <DatePast data={props.date.day} />
       )
-    } else if (isReserved) {
+    } else if (props.res_list.includes(stringDate)) {
       return(
         <DatePast data={props.date.day} />
+      )
+    } else if (props.data.in_res_date_list.includes(stringDate)) {
+      return (
+        <PotentialReservation
+          className="availableDate"
+          day={props.date.day}
+          date={props.date}
+          base_price={props.listing.base_price}
+          state={props.data}
+          selectDate={props.selectDate} />
       )
     } else {
       // console.log('date available')

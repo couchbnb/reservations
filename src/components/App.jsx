@@ -77,7 +77,8 @@ class App extends React.Component {
         adults: 1,
         children: 0,
         infants: 0,
-      }
+      },
+      in_res_date_list: []
     };
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
@@ -202,7 +203,7 @@ class App extends React.Component {
         valid_res: true,
         res_nights_length: length,
         calView: false,
-        inResDateList: inResDateList,
+        in_res_date_list: inResDateList,
       })
     }
   }

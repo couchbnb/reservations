@@ -142,6 +142,7 @@ const CalendarView = (props) => {
           current_date={props.data.current_date}
           res_list={props.data.res_list}
           selectDate={props.selectDate}
+
           />
         <RightCalendar
           month={month2}
@@ -151,6 +152,7 @@ const CalendarView = (props) => {
           current_date={props.data.current_date}
           res_list={props.data.res_list}
           selectDate={props.selectDate}
+
           />
       </Calend>
 
