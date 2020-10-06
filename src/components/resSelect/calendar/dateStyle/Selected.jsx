@@ -11,24 +11,24 @@ const DateSpace = styled.td`
   background: rgb(255, 255, 255);
   color: rgb(34, 34, 34);
   border-radius: 100% !important;
-  border: 1.5px solid rgb(255, 255, 255) !important;
+  ${'' /* border: 1.5px solid rgb(255, 255, 255) !important; */}
   cursor: default !important;
   box-sizing: border-box !important;
 `;
 
 
 const Highlight = styled.div`
-  height: 105%;
+  height: 100%;
   width: 100%;
   margin-left: 0px !important;
-  margin-right: 1px !important;
+  margin-right: 0px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-direction: column !important;
   border-radius: 100% !important;
   background: rgb(34, 34, 34) !important;
-  border: 1.5px solid rgb(34, 34, 34) !important;
+  ${'' /* border: 1.5px solid rgb(34, 34, 34) !important; */}
   color: rgb(255, 255, 255) !important;
   position: relative !important;
   z-index: 1 !important;
