@@ -100,7 +100,8 @@ class App extends React.Component {
       start_day: res_start.day,
       end_year: 2020,
       end_month: res_end.monthNum,
-      end_day: res_end.day
+      end_day: res_end.day,
+      inResDateList: [],
     })
       .then(function (response) {
         console.log(response);
@@ -180,13 +181,18 @@ class App extends React.Component {
       var length = 0;
       var startDate = this.state.res_start;
       var startDateString = this.state.res_start_string;
+      var inResDateList = [];
+
       while (startDateString !== dateString) {
+
         length++;
 
         // traverse calendar and set a new string for comparison
         startDate = this.state.calendar[startDate.monthNum][startDate.day] || this.state.calendar[startDate.monthNum + 1][0]
         startDateString = `${2020}${startDate.monthNum}${startDate.day}`;
-        console.log(startDateString);
+        if (startDateString != this.state.res_end_string && startDateString != dateString) {
+          inResDateList.push(startDateString);
+        }
       }
 
       this.setState({
@@ -196,13 +202,15 @@ class App extends React.Component {
         valid_res: true,
         res_nights_length: length,
         calView: false,
+        inResDateList: inResDateList,
       })
     }
   }
 
+
   clearDates() {
     console.log('clearing dates')
-    this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start', valid_res: false, res_nights_length: 0 });
+    this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start', valid_res: false, res_nights_length: 0, inResDateList: [] });
   }
 
   formatReservations(reservations) {
