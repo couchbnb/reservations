@@ -35,6 +35,10 @@ reservations/index.js -- server start file
     - this will delete any data, but it does not drop database at this time
     - if you need to reseed from listing #1, you need to drop db and start from step 2
 
-
 # launch server
 1. npm start
+
+
+
+### additional instructions for development ###
+1. npm run build (sets webpack up to recompile app on changes)
