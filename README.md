@@ -38,6 +38,9 @@ reservations/index.js -- server start file
 # launch server
 1. npm start
 
+# compile files locally
+1. npm run compile (should add bundle.js file to /public dir)
+
 
 
 ### additional instructions for development ###
