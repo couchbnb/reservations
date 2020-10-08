@@ -3,3 +3,4 @@ config.js
 coverage/
 public/bundle.js
 reservations/package-lock.json
+package-lock.json
