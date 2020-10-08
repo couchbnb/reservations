@@ -5,12 +5,12 @@ import styled from 'styled-components';
 // components
 import LeftCalendar from './LeftCalendar.jsx';
 import RightCalendar from './RightCalendar.jsx';
-import CheckIn from '../CheckIn.jsx';
-import CheckOut from '../CheckOut.jsx';
+import CheckInOut from './CheckinOut.jsx'
+// import CheckIn from '../CheckIn.jsx';
+// import CheckOut from '../CheckOut.jsx';
 import Close from './Close.jsx';
 import Clear from './Clear.jsx';
 import Keyboard from './Keyboard.jsx'
-import CheckInOut from './CheckinOut.jsx'
 
 
 
@@ -23,7 +23,7 @@ let Wrapper = styled.div`
   ${'' /* display: inline-block !important; */}
   padding: 24px 32px 16px !important;
   ${'' /* position: absolute !important; */}
-  top: -24px !important;
+  top: -14px !important;
   right: -32px !important;
   width: 661px !important;
   z-index: 1 !important;

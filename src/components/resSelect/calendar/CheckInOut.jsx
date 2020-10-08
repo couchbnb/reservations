@@ -21,28 +21,28 @@ const OtherChecking = styled.div`
 `;
 
 const CheckInOut = (props) => {
-  if (props.data.selecting === "start") {
-    return (
-      <OtherChecking>
-        <CheckIn data={props.data.res_start} state={props.data.selecting} />
-        <CheckOut data={props.data.res_end} state={props.data.selecting} />
-      </OtherChecking>
-    )
-  } else if (props.data.selecting === "end") {
-    return (
-      <OtherChecking>
-        <CheckIn data={props.data.res_start} state={props.data.selecting} />
-        <CheckOut data={props.data.res_end} state={props.data.selecting} />
-      </OtherChecking>
-    )
-  } else {
+  // if (props.data.selecting === "start") {
+  //   return (
+  //     <OtherChecking>
+  //       <CheckIn data={props.data.res_start} state={props.data.selecting} />
+  //       <CheckOut data={props.data.res_end} state={props.data.selecting} />
+  //     </OtherChecking>
+  //   )
+  // } else if (props.data.selecting === "end") {
+  //   return (
+  //     <OtherChecking>
+  //       <CheckIn data={props.data.res_start} state={props.data.selecting} />
+  //       <CheckOut data={props.data.res_end} state={props.data.selecting} />
+  //     </OtherChecking>
+  //   )
+  // } else {
     return (
       <Checking>
         <CheckIn data={props.data.res_start} state={props.data.selecting} />
         <CheckOut data={props.data.res_end} state={props.data.selecting} />
       </Checking>
     )
-  }
+  // }
 }
 
 export default CheckInOut;
