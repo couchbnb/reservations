@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 const Dollar = styled.div`
   font-size: 22px !important;
   line-height: 26px !important;
-  font-weight: 600;
+  font-weight: 600 !important;
 `;
 
 const Night = styled.div`

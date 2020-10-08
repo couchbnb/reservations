@@ -12,7 +12,7 @@ module.exports = {
     model.getReservations(listing, callback)
   },
   addReservation: (data, callback) => {
-    console.log(data);
+    // console.log(data);
     var stringData = `( ${data.listing_id}, ${data.start_year}, ${data.start_month}, ${data.start_day}, ${data.end_year}, ${data.end_month}, ${data.end_day} )`;
     model.addReservation(stringData, callback);
   }

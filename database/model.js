@@ -34,7 +34,7 @@ module.exports = {
   addReservation: (dataString, callback) => {
     var queryString = `INSERT INTO reservations( listing_id, start_year, start_month, start_day, end_year, end_month, end_day ) VALUES `;
     queryString += dataString;
-    console.log(queryString);
+    // console.log(queryString);
     connection.query(queryString, (err, rows) => {
       if (err) {
         callback(err, rows);
