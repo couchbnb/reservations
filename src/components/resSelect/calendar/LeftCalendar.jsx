@@ -86,7 +86,7 @@ const LeftCalendar = (props) => {
             </tr>
             {weeks.map(
               (week) => {
-                console.log('row week')
+                {/* console.log('row week') */}
                 return <RowDates
                   state={props.data}
                   data={week}

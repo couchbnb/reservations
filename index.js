@@ -33,7 +33,7 @@ app.get('/api/listing', (req, res) => {
 })
 // get reservations for a specific listing
 app.get('/api/reservations', (req, res) => {
-  console.log(req.query)
+  // console.log(req.query)
   control.getReservations(req.query.listing_id, (err, data)=>{
     if (err) {
       console.log(err.name)

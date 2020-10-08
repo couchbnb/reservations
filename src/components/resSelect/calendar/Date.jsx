@@ -42,7 +42,7 @@ const Date = (props) => {
       )
     }
     if (isPastMonth || isSameMonthPastDay) {
-      console.log('date passed')
+      // console.log('date passed')
       return (
         <DatePast data={props.date.day} />
       )

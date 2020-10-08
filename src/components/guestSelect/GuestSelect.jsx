@@ -45,8 +45,7 @@ class GuestSelect extends React.Component {
   }
 
   updateGuestCount(count, type) {
-
-    console.log(type);
+    // console.log(type);
     var adults, children, infants
     if (type === 'Adults') {
       if (count < 1) {

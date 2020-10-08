@@ -10,11 +10,13 @@ import CheckOut from '../CheckOut.jsx';
 import Close from './Close.jsx';
 import Clear from './Clear.jsx';
 import Keyboard from './Keyboard.jsx'
+import CheckInOut from './CheckinOut.jsx'
 
 
 
 // styled-components
 let Wrapper = styled.div`
+  position: relative;
   background: rgb(255, 255, 255) !important;
   border-radius: 16px !important;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px !important;
@@ -86,13 +88,7 @@ let SubheadText = styled.div`
 `;
 
 let Checking = styled.div`
-  display: flex;
-  border-style: solid;
-  border-color: black;
-  border-radius: 7px;
-  border-width: thin;
-  width: 300px;
-  height: 56px;
+
 `;
 
 let Foot = styled.div`
@@ -127,10 +123,7 @@ const CalendarView = (props) => {
             <SubheadText>Minimum Stay: 1 night</SubheadText>
           </Subhead>
         </div>
-        <Checking>
-          <CheckIn data={props.data.res_start} />
-          <CheckOut data={props.data.res_end} />
-        </Checking>
+        <CheckInOut data={props.data} />
       </Summary>
 
       <Calend className="calend">

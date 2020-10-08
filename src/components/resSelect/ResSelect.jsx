@@ -19,7 +19,7 @@ const Box = styled.div`
   margin-bottom: 16px;
   box-sizing: border-box;
   width: 100%;
-  position: relative;
+  position: relative !important;
 `;
 
 const CheckInOut = styled.div`
@@ -62,7 +62,7 @@ const InnerWrap = styled.div`
 `;
 
 const PopUpHide = styled.div`
-  position: absolute;
+  position: absolute !important;
   z-index: 1;
   right: -30px;
   top: -20px;
@@ -70,7 +70,7 @@ const PopUpHide = styled.div`
 `;
 
 const PopUpDisplay = styled.div`
-  position: absolute;
+  position: absolute !important;
   z-index: 1;
   right: -30px;
   top: -20px;

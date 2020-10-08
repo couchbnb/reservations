@@ -9,50 +9,56 @@ import Reserve from './Reserve.jsx';
 import ResSelect from './resSelect/ResSelect.jsx';
 import RatingSummary from './RatingSummary.jsx';
 // import CalendarView from './resSelect/calendar/CalendarView.jsx';
-import GuestSelect from './guestSelect/GuestSelect.jsx';
+// import GuestSelect from './guestSelect/GuestSelect.jsx';
 
 //styled-components
 const Grid = styled.div`
+  width: 100% !important ;
+  display: flex !important;
+  flex-direction: row-reverse !important;
 `;
 
 const Wrapper = styled.section`
-  top: 50px;
-  margin: 50px;
-  margin-left: 50%;
-  margin-bottom: 80px;
-  margin-top: 48px;
-  padding: 24px;
+  top: 50px !important;
+  margin: 50px !important;
+  margin-left: 50px !important;
+  margin-bottom: 80px !important;
+  margin-top: 48px !important;
+  padding: 24px !important;
 
-  box-sizing: border-box;
-  max-width: 300px;
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  box-sizing: border-box !important;
+  max-width: 350px !important;
+  min-width: 260px !important;
+  width: 18%;
+  border: 1px solid rgb(221, 221, 221) !important;
+  border-radius: 12px !important;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px !important;
 
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  border-width: thin;
-  color: #222222;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+  border-width: thin !important;
+  color: #222222 !important;
+  font-weight: 400 !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 20px !important;
 
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
 `;
 
 const Summary = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 24px
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: baseline !important;
+  margin-bottom: 24px !important;
 `;
 
 const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
 `;
 
 class App extends React.Component {
@@ -103,7 +109,7 @@ class App extends React.Component {
       end_day: res_end.day
     })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
       })
       .catch(function(err) {
         if (err) {
@@ -128,10 +134,10 @@ class App extends React.Component {
       .then(function (response) {
         var newListing = response.data[0];
         var dates = response.data[1];
-        console.log('listing');
-        console.log(newListing);
-        console.log('dates');
-        console.log(dates);
+        // console.log('listing');
+        // console.log(newListing);
+        // console.log('dates');
+        // console.log(dates);
         current_date.month = dates.cMonth;
         current_date.day = dates.cDate;
         current_date.year = dates.cYear;
@@ -154,7 +160,7 @@ class App extends React.Component {
     var resy = this.formatReservations.bind(this);
     axios.get(queryString)
       .then(function (response) {
-        console.log('got res data')
+        // console.log('got res data')
         setter({ reservations: response.data }, () => { resy(response.data) } );
       })
       .catch(function(err) {
@@ -186,7 +192,7 @@ class App extends React.Component {
         // traverse calendar and set a new string for comparison
         startDate = this.state.calendar[startDate.monthNum][startDate.day] || this.state.calendar[startDate.monthNum + 1][0]
         startDateString = `${2020}${startDate.monthNum}${startDate.day}`;
-        console.log(startDateString);
+        // console.log(startDateString);
       }
 
       this.setState({
@@ -201,7 +207,7 @@ class App extends React.Component {
   }
 
   clearDates() {
-    console.log('clearing dates')
+    // console.log('clearing dates')
     this.setState({ res_start: {}, res_end: {}, res_end_string: '', res_start_string: '', selecting: 'start', valid_res: false, res_nights_length: 0 });
   }
 
@@ -264,9 +270,9 @@ class App extends React.Component {
   }
 
   setGuests(adults, children, infants) {
-    console.log('adults ' + adults)
-    console.log('children ' + children)
-    console.log('infants ' + infants)
+    // console.log('adults ' + adults)
+    // console.log('children ' + children)
+    // console.log('infants ' + infants)
 
     this.setState({ guests: { adults, children, infants } })
   }
