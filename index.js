@@ -11,7 +11,7 @@ app.use(parser.json());
 app.use(cors());
 app.use('/', express.static(path.join(__dirname, '/public')))
 
-app.use('/public/bundle/reservations', express.static(path.join(__dirname, '/public/bundle.js')))
+// app.use('/public/bundle/reservations', express.static(path.join(__dirname, '/public/bundle.js')))
 
 app.listen(port, () => {
   console.log(`Reservation module listening at http://localhost:${port}`)
