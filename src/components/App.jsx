@@ -13,9 +13,18 @@ import RatingSummary from './RatingSummary.jsx';
 
 //styled-components
 const Grid = styled.div`
+  padding: 50px;
+  padding-right: 80px;
+  padding-left: 80px;
+  max-width: 1280px !important;
   width: 100% !important ;
   display: flex !important;
-  flex-direction: row-reverse !important;
+  align-items: flex-start;
+`;
+
+const Description = styled.img`
+  width: 58.3333% !important;
+  min-width: 500px;
 `;
 
 const Wrapper = styled.section`
@@ -27,9 +36,8 @@ const Wrapper = styled.section`
   padding: 24px !important;
 
   box-sizing: border-box !important;
-  max-width: 350px !important;
-  min-width: 260px !important;
-  width: 18%;
+  width: 33.3333% !important;
+  margin-left: 8.33333% !important;
   border: 1px solid rgb(221, 221, 221) !important;
   border-radius: 12px !important;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px !important;
@@ -280,6 +288,7 @@ class App extends React.Component {
   render () {
     return (
       <Grid className="App">
+        <Description src="listing_description.png" />
         <Wrapper className="wrapper">
           <Summary className="summary">
             <PriceSummary listing={this.state.listing} />
