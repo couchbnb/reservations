@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const app = express();
 const port = 3005;
 const control = require('./database/control.js');
@@ -7,8 +8,11 @@ const parser = require('body-parser')
 const dates = require('./database/dates.js');
 app.use(parser.urlencoded({ extended: false }))
 app.use(parser.json());
+app.use(cors());
 app.use('/', express.static(path.join(__dirname, '/public')))
-app.use('/public/bundle', express.static(path.join(__dirname, '/public/bundle.js')))
+
+app.use('/public/bundle/reservations', express.static(path.join(__dirname, '/public/bundle.js')))
+
 app.listen(port, () => {
   console.log(`Reservation module listening at http://localhost:${port}`)
 })
