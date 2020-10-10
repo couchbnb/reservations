@@ -45,7 +45,7 @@ app.get('/api/reservations', (req, res) => {
 })
 // add reservation to db
 app.post('/api/reservations', (req, res) => {
-  control.addReservation(req.body, (err, data)=>{
+  control.addReservation(req.body, (err)=>{
     if (err) {
       console.log(err.name)
       res.sendStatus(500);

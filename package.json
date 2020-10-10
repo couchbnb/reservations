@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon reservations/index.js",
+    "start": "node ./index.js",
+    "setup": "nodemon ./index.js",
     "build": "webpack --watch --config webpack.config.js",
     "seed": "node database/seeder.js",
     "coverage": "jest --collect-coverage",

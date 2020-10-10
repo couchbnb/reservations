@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  reservation:
+  app:
     build: .
     ports:
       - 3005:3005
     depends_on:
       - 'database'
-    # restart: on-failure
+    restart: on-failure
     environment:
       MYSQL_HOST: database
       MYSQL_USER: root
@@ -19,8 +19,5 @@ services:
     build: ./database
     ports:
       - 3306
-    expose:
-      - 3306
     environment:
       MYSQL_ROOT_PASSWORD: student
-      # MYSQL_ROOT_HOST: "%"
