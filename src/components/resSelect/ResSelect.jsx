@@ -72,8 +72,8 @@ const PopUpHide = styled.div`
 const PopUpDisplay = styled.div`
   position: absolute !important;
   z-index: 1;
-  right: -30px;
-  top: -20px;
+  right: -10px;
+  top: -10px;
   display: block;
 `;
 

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - 3005:3005
+    depends_on:
+      - 'database'
+    restart: on-failure
+    environment:
+      MYSQL_HOST: database
+      MYSQL_USER: root
+      MYSQL_PASSWORD: student
+      MYSQL_DB: fec_res
+    command: sh -c 'npm start'
+
+  database:
+    build: ./database
+    ports:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: student

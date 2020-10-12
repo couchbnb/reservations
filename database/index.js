@@ -5,13 +5,12 @@ const connection = mysql.createConnection(DB_CRED);
 
 connection.connect()
 
-connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+connection.query('SELECT 1 + 1 AS solution', function (err, rows) {
   if (err) {
-    console.log(err.name);
-    throw err
+    console.log(err);
+  } else {
+    console.log('index DB test', rows[0].solution)
   }
-
-  console.log('index DB test. connected if 1 + 1 =', rows[0].solution)
 })
 
 module.exports = { connection };

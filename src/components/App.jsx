@@ -8,8 +8,6 @@ import Fees from './Fees.jsx';
 import Reserve from './Reserve.jsx';
 import ResSelect from './resSelect/ResSelect.jsx';
 import RatingSummary from './RatingSummary.jsx';
-// import CalendarView from './resSelect/calendar/CalendarView.jsx';
-// import GuestSelect from './guestSelect/GuestSelect.jsx';
 
 //styled-components
 const Grid = styled.div`
@@ -22,26 +20,23 @@ const Grid = styled.div`
   align-items: flex-start;
 `;
 
-const Description = styled.img`
+const Text = styled.div`
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
   width: 58.3333% !important;
   min-width: 500px;
 `;
 
-const Wrapper = styled.section`
-  top: 50px !important;
-  margin: 50px !important;
-  margin-left: 50px !important;
-  margin-bottom: 80px !important;
-  margin-top: 48px !important;
-  padding: 24px !important;
+const Description = styled.img`
+  width: 100%;
+  max-width: 580px;
+`;
 
-  box-sizing: border-box !important;
-  width: 33.3333% !important;
-  margin-left: 8.33333% !important;
+const Size = styled.div`
   border: 1px solid rgb(221, 221, 221) !important;
   border-radius: 12px !important;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px !important;
-
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
   border-width: thin !important;
   color: #222222 !important;
@@ -49,9 +44,27 @@ const Wrapper = styled.section`
   font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 20px !important;
-
   display: flex !important;
   flex-direction: column !important;
+  padding: 24px !important;
+  top: 50px !important;
+  margin: 50px !important;
+  margin-left: 50px !important;
+  margin-bottom: 80px !important;
+  margin-top: 48px !important;
+
+`;
+
+const Wrapper = styled.section`
+  box-sizing: border-box !important;
+  width: 33.3333% !important;
+  min-width: 350px;
+  position: sticky;
+  top: 48px;
+`;
+
+const Pad = styled.div`
+  width: 8.33333% !important;
 `;
 
 const Summary = styled.div`
@@ -96,8 +109,6 @@ class App extends React.Component {
     this.getListingData = this.getListingData.bind(this);
     this.getListingReservation = this.getListingReservation.bind(this);
     this.formatReservations = this.formatReservations.bind(this);
-    // this.selectDate = this.selectDate.bind(this);
-    // this.clearDates = this.clearDates.bind(this);
   }
 
   addReservation() {
@@ -116,19 +127,16 @@ class App extends React.Component {
       end_month: res_end.monthNum,
       end_day: res_end.day
     })
-      .then(function (response) {
-        // console.log(response);
-      })
-      .catch(function(err) {
-        if (err) {
-          throw err;
-        }
-      })
       .then(function() {
         getRes(listing_id);
       })
       .then(function() {
         clearDates();
+      })
+      .catch(function(err) {
+        if (err) {
+          throw err;
+        }
       })
   }
 
@@ -142,10 +150,6 @@ class App extends React.Component {
       .then(function (response) {
         var newListing = response.data[0];
         var dates = response.data[1];
-        // console.log('listing');
-        // console.log(newListing);
-        // console.log('dates');
-        // console.log(dates);
         current_date.month = dates.cMonth;
         current_date.day = dates.cDate;
         current_date.year = dates.cYear;
@@ -269,51 +273,49 @@ class App extends React.Component {
 
   toggleCalendar() {
     var toggle = !this.state.calView;
-    this.setState({calView: toggle});
+    this.setState({calView: toggle, guestView: false});
   }
 
   toggleGuest() {
   var toggle = !this.state.guestView;
-  this.setState({guestView: toggle});
+  this.setState({guestView: toggle, calView: false});
   }
 
   setGuests(adults, children, infants) {
-    // console.log('adults ' + adults)
-    // console.log('children ' + children)
-    // console.log('infants ' + infants)
-
     this.setState({ guests: { adults, children, infants } })
   }
 
   render () {
     return (
       <Grid className="App">
-        <Description src="listing_description.png" />
+        <Text>
+          <Description src="listing_description2.png" />
+          <Description src="ListingDetails.png" />
+        </Text>
         <Wrapper className="wrapper">
-          <Summary className="summary">
-            <PriceSummary listing={this.state.listing} />
-            <RatingSummary listing={this.state.listing} />
-          </Summary>
-          <ResSelect
-            res_start={this.state.res_start}
-            res_end={this.state.res_end}
-            calView={this.state.calView}
-            guestView={this.state.guestView}
-            toggleCalendar={this.toggleCalendar.bind(this)}
-            toggleGuest={this.toggleGuest.bind(this)}
-            data={this.state}
-            selectDate={this.selectDate.bind(this)}
-            clearDates={this.clearDates.bind(this)}
-            setGuests={this.setGuests.bind(this)} />
-          <Button className="button">
-            <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
-          </Button>
-          <Fees valid_res={this.state.valid_res} listing={this.state.listing} res_nights_length={this.state.res_nights_length} />
+          <Size>
+            <Summary className="summary">
+              <PriceSummary listing={this.state.listing} />
+              <RatingSummary listing={this.state.listing} />
+            </Summary>
+            <ResSelect
+              res_start={this.state.res_start}
+              res_end={this.state.res_end}
+              calView={this.state.calView}
+              guestView={this.state.guestView}
+              toggleCalendar={this.toggleCalendar.bind(this)}
+              toggleGuest={this.toggleGuest.bind(this)}
+              data={this.state}
+              selectDate={this.selectDate.bind(this)}
+              clearDates={this.clearDates.bind(this)}
+              setGuests={this.setGuests.bind(this)} />
+            <Button className="button">
+              <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
+            </Button>
+            <Fees valid_res={this.state.valid_res} listing={this.state.listing} res_nights_length={this.state.res_nights_length} />
+          </Size>
         </Wrapper>
-        {/* <CalendarView
-
-        /> */}
-        {/* <GuestSelect /> */}
+        <Pad></Pad>
       </Grid>
     )
   }
