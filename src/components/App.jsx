@@ -24,11 +24,13 @@ const Text = styled.div`
   height: 1000px;
   display: flex;
   flex-direction: column;
+  width: 58.3333% !important;
+  min-width: 500px;
 `;
 
 const Description = styled.img`
-  width: 58.3333% !important;
-  min-width: 500px;
+  width: 100%;
+  max-width: 580px;
 `;
 
 const Size = styled.div`
