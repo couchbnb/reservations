@@ -27,17 +27,9 @@ const Description = styled.img`
   min-width: 500px;
 `;
 
-const Wrapper = styled.section`
-  top: 50px !important;
-  margin: 50px !important;
-  margin-left: 50px !important;
-  margin-bottom: 80px !important;
-  margin-top: 48px !important;
-  padding: 24px !important;
+const Size = styled.div`
 
-  box-sizing: border-box !important;
-  width: 33.3333% !important;
-  margin-left: 8.33333% !important;
+
   border: 1px solid rgb(221, 221, 221) !important;
   border-radius: 12px !important;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px !important;
@@ -52,6 +44,22 @@ const Wrapper = styled.section`
 
   display: flex !important;
   flex-direction: column !important;
+  padding: 24px !important;
+  top: 50px !important;
+  margin: 50px !important;
+  margin-left: 50px !important;
+  margin-bottom: 80px !important;
+  margin-top: 48px !important;
+`;
+
+const Wrapper = styled.section`
+  box-sizing: border-box !important;
+  width: 33.3333% !important;
+  min-width: 350px;
+`;
+
+const Pad = styled.div`
+  width: 8.33333% !important;
 `;
 
 const Summary = styled.div`
@@ -290,30 +298,29 @@ class App extends React.Component {
       <Grid className="App">
         <Description src="listing_description.png" />
         <Wrapper className="wrapper">
-          <Summary className="summary">
-            <PriceSummary listing={this.state.listing} />
-            <RatingSummary listing={this.state.listing} />
-          </Summary>
-          <ResSelect
-            res_start={this.state.res_start}
-            res_end={this.state.res_end}
-            calView={this.state.calView}
-            guestView={this.state.guestView}
-            toggleCalendar={this.toggleCalendar.bind(this)}
-            toggleGuest={this.toggleGuest.bind(this)}
-            data={this.state}
-            selectDate={this.selectDate.bind(this)}
-            clearDates={this.clearDates.bind(this)}
-            setGuests={this.setGuests.bind(this)} />
-          <Button className="button">
-            <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
-          </Button>
-          <Fees valid_res={this.state.valid_res} listing={this.state.listing} res_nights_length={this.state.res_nights_length} />
+          <Size>
+            <Summary className="summary">
+              <PriceSummary listing={this.state.listing} />
+              <RatingSummary listing={this.state.listing} />
+            </Summary>
+            <ResSelect
+              res_start={this.state.res_start}
+              res_end={this.state.res_end}
+              calView={this.state.calView}
+              guestView={this.state.guestView}
+              toggleCalendar={this.toggleCalendar.bind(this)}
+              toggleGuest={this.toggleGuest.bind(this)}
+              data={this.state}
+              selectDate={this.selectDate.bind(this)}
+              clearDates={this.clearDates.bind(this)}
+              setGuests={this.setGuests.bind(this)} />
+            <Button className="button">
+              <Reserve valid_res={this.state.valid_res} addReservation={this.addReservation.bind(this)}/>
+            </Button>
+            <Fees valid_res={this.state.valid_res} listing={this.state.listing} res_nights_length={this.state.res_nights_length} />
+          </Size>
         </Wrapper>
-        {/* <CalendarView
-
-        /> */}
-        {/* <GuestSelect /> */}
+        <Pad></Pad>
       </Grid>
     )
   }
