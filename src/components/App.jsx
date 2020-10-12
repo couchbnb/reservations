@@ -277,12 +277,12 @@ class App extends React.Component {
 
   toggleCalendar() {
     var toggle = !this.state.calView;
-    this.setState({calView: toggle});
+    this.setState({calView: toggle, guestView: false});
   }
 
   toggleGuest() {
   var toggle = !this.state.guestView;
-  this.setState({guestView: toggle});
+  this.setState({guestView: toggle, calView: false});
   }
 
   setGuests(adults, children, infants) {

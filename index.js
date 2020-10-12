@@ -23,7 +23,7 @@ app.get('/api/listing', (req, res) => {
   // input is a listing ID
   control.getListing(req.query.listing_id, (err, data)=>{
     if (err) {
-      console.log(err.name)
+      console.log(err)
       res.sendStatus(500);
     } else {
       data.push(dates);
@@ -36,7 +36,7 @@ app.get('/api/reservations', (req, res) => {
   // console.log(req.query)
   control.getReservations(req.query.listing_id, (err, data)=>{
     if (err) {
-      console.log(err.name)
+      console.log(err)
       res.sendStatus(500);
     } else {
       res.status(200).send(data);
@@ -47,7 +47,7 @@ app.get('/api/reservations', (req, res) => {
 app.post('/api/reservations', (req, res) => {
   control.addReservation(req.body, (err)=>{
     if (err) {
-      console.log(err.name)
+      console.log(err)
       res.sendStatus(500);
     } else {
       res.status(201).send();

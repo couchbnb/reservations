@@ -8,7 +8,6 @@ connection.connect()
 connection.query('SELECT 1 + 1 AS solution', function (err, rows) {
   if (err) {
     console.log(err);
-    // throw err
   } else {
     console.log('index DB test', rows[0].solution)
   }
